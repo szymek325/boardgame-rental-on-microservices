@@ -23,7 +23,6 @@ namespace BoardGameRentalApp.WebApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connectionStringSection = Configuration.GetSection(nameof(ConnectionStrings));
             var connectionStrings = new ConnectionStrings();
             Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
             services.AddEntityFrameworkModule(connectionStrings);
