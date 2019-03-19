@@ -14,4 +14,8 @@
     <ProjectReference Include="..\BoardGameRentalApp.Core\BoardGameRentalApp.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UnitOfWork\" />
+  </ItemGroup>
+
 </Project>
