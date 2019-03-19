@@ -1,8 +1,11 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using BoardGameRentalApp.Core.Configuration;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 namespace BoardGameRentalApp.DataAccess.EntityFramework
 {
