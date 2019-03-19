@@ -1,8 +1,8 @@
 ﻿namespace BoardGameRentalApp.Core.Models
 {
-    internal enum Status
+    public enum Status
     {
-        InProgress=1,
-        Completed=2
+        InProgress = 1,
+        Completed = 2
     }
 }

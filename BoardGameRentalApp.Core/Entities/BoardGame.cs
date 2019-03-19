@@ -1,6 +1,6 @@
 ﻿namespace BoardGameRentalApp.Core.Entities
 {
-    internal class BoardGame
+    public class BoardGame : BaseEntity
     {
         public string Name { get; set; }
         public float PricePerDay { get; set; }

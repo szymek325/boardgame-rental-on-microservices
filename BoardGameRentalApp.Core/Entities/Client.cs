@@ -1,6 +1,6 @@
 ﻿namespace BoardGameRentalApp.Core.Entities
 {
-    internal class Client
+    public class Client : BaseEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

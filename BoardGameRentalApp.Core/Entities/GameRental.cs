@@ -2,7 +2,7 @@
 
 namespace BoardGameRentalApp.Core.Entities
 {
-    internal class GameRental
+    public class GameRental : BaseEntity
     {
         public int ClientId { get; set; }
         public int BoardGameId { get; set; }
