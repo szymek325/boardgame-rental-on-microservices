@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using BoardGameRentalApp.Core.Configuration;
-using BoardGameRentalApp.Core.DataAccess;
+using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
 using BoardGameRentalApp.DataAccess.EntityFramework.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +20,9 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework
                 migrationsOptions =>
                     migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalContext).GetTypeInfo().Assembly.GetName().Name)));
 
+            services.AddTransient<IBoardGamesRepository, BoardGamesRepository>();
+            services.AddTransient<IClientsRepository, ClientsRepository>();
+            services.AddTransient<IGameRentalsRepository, GameRentalsRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             return services;
         }

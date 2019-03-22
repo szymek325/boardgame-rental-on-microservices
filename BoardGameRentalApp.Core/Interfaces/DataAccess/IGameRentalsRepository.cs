@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using BoardGameRentalApp.Core.Entities;
 
-namespace BoardGameRentalApp.Core.DataAccess
+namespace BoardGameRentalApp.Core.Interfaces.DataAccess
 {
     public interface IGameRentalsRepository
     {

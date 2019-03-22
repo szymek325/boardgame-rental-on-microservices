@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using BoardGameRentalApp.Core.DataAccess;
+using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
 
 namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
