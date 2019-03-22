@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using BoardGameRentalApp.Core.DataAccess;
 using BoardGameRentalApp.Core.Entities;
+using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
 
 namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories

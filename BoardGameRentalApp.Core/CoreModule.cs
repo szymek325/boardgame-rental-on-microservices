@@ -1,6 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 using BoardGameRentalApp.Core.Common;
-using BoardGameRentalApp.Core.DataAccess;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
