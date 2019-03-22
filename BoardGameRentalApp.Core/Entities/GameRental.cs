@@ -9,5 +9,6 @@ namespace BoardGameRentalApp.Core.Entities
         public BoardGame BoardGame { get; set; }
         public Client Client { get; set; }
         public Status Status { get; set; }
+        public float PaymentAmount { get; set; }
     }
 }
