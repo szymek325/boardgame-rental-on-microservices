@@ -7,8 +7,8 @@ namespace BoardGameRentalApp.Core.Interfaces.DataAccess
     {
         IEnumerable<BoardGame> GetAll();
         BoardGame Get(int? id);
-        void Create(BoardGame entity);
-        void Delete(BoardGame entity);
+        void Add(BoardGame entity);
+        void Remove(BoardGame entity);
         void Update(BoardGame entity);
     }
 }

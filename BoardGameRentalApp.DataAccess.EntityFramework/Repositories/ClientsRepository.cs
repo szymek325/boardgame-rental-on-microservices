@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
@@ -17,27 +17,27 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
 
         public IEnumerable<Client> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Clients.ToList();
         }
 
         public Client Get(int? id)
         {
-            throw new NotImplementedException();
+            return _context.Clients.FirstOrDefault(x => x.Id == id);
         }
 
         public void Create(Client entity)
         {
-            throw new NotImplementedException();
+            _context.Clients.Add(entity);
         }
 
-        public void Delete(Client entity)
+        public void Remove(Client entity)
         {
-            throw new NotImplementedException();
+            _context.Clients.Remove(entity);
         }
 
         public void Update(Client entity)
         {
-            throw new NotImplementedException();
+            _context.Clients.Update(entity);
         }
     }
 }

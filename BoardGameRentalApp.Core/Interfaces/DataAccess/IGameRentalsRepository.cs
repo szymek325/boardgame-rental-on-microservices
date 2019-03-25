@@ -7,8 +7,8 @@ namespace BoardGameRentalApp.Core.Interfaces.DataAccess
     {
         IEnumerable<GameRental> GetAll();
         GameRental Get(int? id);
-        void Create(GameRental entity);
-        void Delete(GameRental entity);
+        void Add(GameRental entity);
+        void Remove(GameRental entity);
         void Update(GameRental entity);
     }
 }

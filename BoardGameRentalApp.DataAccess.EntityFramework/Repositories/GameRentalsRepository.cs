@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
 {
@@ -15,29 +16,29 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
             _context = context;
         }
 
-        public void Create(GameRental entity)
+        public void Add(GameRental entity)
         {
-            throw new NotImplementedException();
+            _context.GameRentals.Add(entity);
         }
 
-        public void Delete(GameRental entity)
+        public void Remove(GameRental entity)
         {
-            throw new NotImplementedException();
+            _context.GameRentals.Remove(entity);
         }
 
         public GameRental Get(int? id)
         {
-            throw new NotImplementedException();
+            return _context.GameRentals.FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<GameRental> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.GameRentals.Include(x => x.BoardGame).Include(x => x.Client).ToList();
         }
 
         public void Update(GameRental entity)
         {
-            throw new NotImplementedException();
+            _context.GameRentals.Update(entity);
         }
     }
 }
