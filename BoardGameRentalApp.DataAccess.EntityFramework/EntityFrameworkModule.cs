@@ -20,9 +20,11 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework
                 migrationsOptions =>
                     migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalContext).GetTypeInfo().Assembly.GetName().Name)));
 
-            services.AddTransient<IBoardGamesRepository, BoardGamesRepository>();
-            services.AddTransient<IClientsRepository, ClientsRepository>();
-            services.AddTransient<IGameRentalsRepository, GameRentalsRepository>();
+            //created only by unit of work so should not be registered in DI
+            //services.AddTransient<IBoardGamesRepository, BoardGamesRepository>();
+            //services.AddTransient<IClientsRepository, ClientsRepository>();
+            //services.AddTransient<IGameRentalsRepository, GameRentalsRepository>();
+
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             return services;
         }

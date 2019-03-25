@@ -8,7 +8,7 @@ namespace BoardGameRentalApp.Core.Interfaces.DataAccess
         IEnumerable<Client> GetAll();
         Client Get(int? id);
         void Create(Client entity);
-        void Delete(Client entity);
+        void Remove(Client entity);
         void Update(Client entity);
     }
 }

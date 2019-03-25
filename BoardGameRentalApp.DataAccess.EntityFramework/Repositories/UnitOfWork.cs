@@ -31,12 +31,12 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
             get { return _gameRentalsRepository = _gameRentalsRepository ?? new GameRentalsRepository(_context); }
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             _context.SaveChanges();
         }
 
-        public async Task SaveAsync()
+        public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
         }
