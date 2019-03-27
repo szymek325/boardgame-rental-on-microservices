@@ -21,7 +21,8 @@ namespace BoardGameRentalApp.Core.Mapping
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.PricePerDay, opt => opt.MapFrom(src => src.PricePerDay))
                 .ForMember(dest => dest.Bail, opt => opt.MapFrom(src => src.Bail))
-                .ForMember(dest => dest.CreationTime, opt => opt.MapFrom(src => src.CreationTime));
+                .ForMember(dest => dest.CreationTime, opt => opt.MapFrom(src => src.CreationTime))
+                .ReverseMap();
         }
     }
 }

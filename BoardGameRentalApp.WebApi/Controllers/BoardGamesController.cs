@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Dto.BoardGames;
 using BoardGameRentalApp.Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +16,6 @@ namespace BoardGameRentalApp.WebApi.Controllers
             _service = service;
         }
 
-
         [HttpGet]
         public ActionResult<GetAllBoardGamesOutput> GetAll()
         {
@@ -34,15 +32,14 @@ namespace BoardGameRentalApp.WebApi.Controllers
         public async Task<BoardGameDto> Create([FromBody]
             CreateBoardGameInput boardGameInput)
         {
-            try
-            {
-                return await _service.CreateAsync(boardGameInput);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                throw;
-            }
+            return await _service.CreateAsync(boardGameInput);
+        }
+
+        [HttpPut]
+        public async Task<BoardGameDto> Update([FromBody]
+            BoardGameDto boardGameInput)
+        {
+            return await _service.UpdateAsync(boardGameInput);
         }
     }
 }
