@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Dto.BoardGames;
-using BoardGameRentalApp.Core.Entities;
+using BoardGameRentalApp.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BoardGameRentalApp.WebApi.Controllers
@@ -10,29 +10,39 @@ namespace BoardGameRentalApp.WebApi.Controllers
     [ApiController]
     public class BoardGamesController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult<IEnumerable<BoardGameDto>> GetAll()
+        private readonly IBoardGamesService _service;
+
+        public BoardGamesController(IBoardGamesService service)
         {
-            throw new NotImplementedException();
+            _service = service;
+        }
+
+
+        [HttpGet]
+        public ActionResult<GetAllBoardGamesOutput> GetAll()
+        {
+            return _service.GetAll();
         }
 
         [HttpGet("{id}")]
         public ActionResult<BoardGameDto> Get(int id)
         {
-            throw new NotImplementedException();
+            return _service.Get(id);
         }
 
         [HttpPost]
-        public ActionResult<int> Add([FromBody]
-            BoardGame boardGame)
+        public async Task<BoardGameDto> Create([FromBody]
+            CreateBoardGameInput boardGameInput)
         {
-            throw new NotImplementedException();
-        }
-
-        [HttpDelete("{id}")]
-        public ActionResult Remove(BoardGame boardGame)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                return await _service.CreateAsync(boardGameInput);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
     }
 }

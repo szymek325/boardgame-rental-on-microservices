@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
@@ -28,6 +29,11 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
         public void Add(BoardGame entity)
         {
             _context.BoardGames.Add(entity);
+        }
+
+        public async Task AddAsync(BoardGame entity)
+        {
+            await _context.BoardGames.AddAsync(entity);
         }
 
         public void Remove(BoardGame entity)
