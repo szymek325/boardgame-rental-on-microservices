@@ -2,7 +2,7 @@
 
 namespace BoardGameRentalApp.Core.Dto.GameRentals
 {
-    internal class GetAllGameRentalsOutput
+    public class GetAllGameRentalsOutput
     {
         public IEnumerable<GameRentalDto> GameRentals { get; set; }
     }
