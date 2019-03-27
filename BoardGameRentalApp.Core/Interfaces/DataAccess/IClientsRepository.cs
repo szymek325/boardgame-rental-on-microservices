@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 
 namespace BoardGameRentalApp.Core.Interfaces.DataAccess
@@ -7,7 +8,8 @@ namespace BoardGameRentalApp.Core.Interfaces.DataAccess
     {
         IEnumerable<Client> GetAll();
         Client Get(int? id);
-        void Create(Client entity);
+        void Add(Client entity);
+        Task AddAsync(Client entity);
         void Remove(Client entity);
         void Update(Client entity);
     }
