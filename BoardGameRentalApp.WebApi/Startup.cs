@@ -1,4 +1,5 @@
-﻿using BoardGameRentalApp.Core;
+﻿using AutoMapper;
+using BoardGameRentalApp.Core;
 using BoardGameRentalApp.Core.Configuration;
 using BoardGameRentalApp.DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +34,7 @@ namespace BoardGameRentalApp.WebApi
             services.AddEntityFrameworkModule(connectionStrings);
 
             services.AddCoreModule();
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
