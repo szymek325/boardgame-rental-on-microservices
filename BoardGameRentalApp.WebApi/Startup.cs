@@ -2,6 +2,7 @@
 using BoardGameRentalApp.Core;
 using BoardGameRentalApp.Core.Configuration;
 using BoardGameRentalApp.DataAccess.SqlServer;
+using BoardGameRentalApp.DataAccess.SqLite;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -24,14 +25,14 @@ namespace BoardGameRentalApp.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-            });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "My API", Version = "v1"}); });
 
             var connectionStrings = new ConnectionStrings();
             Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
-            services.AddEntityFrameworkModule(connectionStrings);
+            if (connectionStrings.UseSqLite)
+                services.AddSqLiteModule(connectionStrings);
+            else
+                services.AddSqlServerModule(connectionStrings);
 
             services.AddCoreModule();
             services.AddAutoMapper();
@@ -46,10 +47,7 @@ namespace BoardGameRentalApp.WebApi
                 app.UseHsts();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("../swagger/v1/swagger.json", "My API V1");
-            });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("../swagger/v1/swagger.json", "My API V1"); });
 
             app.UseHttpsRedirection();
             app.UseMvc();
