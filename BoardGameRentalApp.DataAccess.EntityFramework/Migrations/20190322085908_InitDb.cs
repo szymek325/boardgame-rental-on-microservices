@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
+namespace BoardGameRentalApp.DataAccess.SqlServer.Migrations
 {
     public partial class InitDb : Migration
     {

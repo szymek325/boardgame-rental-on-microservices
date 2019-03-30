@@ -2,6 +2,8 @@
 {
     public class ConnectionStrings
     {
-        public string MainDb { get; set; }
+        public bool UseSqLite { get; set; }
+        public string SqlServer { get; set; }
+        public string SqLite { get; set; }
     }
 }

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.WebApi",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.Core", "BoardGameRentalApp.Core\BoardGameRentalApp.Core.csproj", "{C9CA88BA-D9B3-4943-9862-7C07913E9FEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.DataAccess.EntityFramework", "BoardGameRentalApp.DataAccess.EntityFramework\BoardGameRentalApp.DataAccess.EntityFramework.csproj", "{05BFA379-FF4B-4240-B320-3951445F8BD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.DataAccess.SqlServer", "BoardGameRentalApp.DataAccess.EntityFramework\BoardGameRentalApp.DataAccess.SqlServer.csproj", "{05BFA379-FF4B-4240-B320-3951445F8BD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

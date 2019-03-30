@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace BoardGameRentalApp.DataAccess.EntityFramework.Context
+namespace BoardGameRentalApp.DataAccess.SqlServer.Context
 {
     internal class BoardGameRentalContextFactory : IDesignTimeDbContextFactory<BoardGameRentalContext>
     {
@@ -15,9 +15,10 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Context
 
             var builder = new DbContextOptionsBuilder<BoardGameRentalContext>();
             builder.UseSqlServer(
-                connectionString.MainDb,
+                connectionString.SqlServer,
                 migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalContext).GetTypeInfo().Assembly.GetName().Name));
+                    migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalContext).GetTypeInfo().Assembly.GetName()
+                        .Name));
 
             return new BoardGameRentalContext(builder.Options);
         }

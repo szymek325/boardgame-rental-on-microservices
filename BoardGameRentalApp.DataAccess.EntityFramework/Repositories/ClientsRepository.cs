@@ -3,9 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
-using BoardGameRentalApp.DataAccess.EntityFramework.Context;
+using BoardGameRentalApp.DataAccess.SqlServer.Context;
 
-namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
+namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
 {
     internal class ClientsRepository : IClientsRepository
     {

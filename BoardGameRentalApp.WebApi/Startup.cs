@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BoardGameRentalApp.Core;
 using BoardGameRentalApp.Core.Configuration;
-using BoardGameRentalApp.DataAccess.EntityFramework;
+using BoardGameRentalApp.DataAccess.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
