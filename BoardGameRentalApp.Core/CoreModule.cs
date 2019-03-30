@@ -14,6 +14,8 @@ namespace BoardGameRentalApp.Core
             services.AddTransient<IDateTimeProvider, DateTimeProvider>();
             services.AddSingleton(typeof(ILoggerAdapter<>), typeof(LoggerAdapter<>));
             services.AddTransient<IBoardGamesService, BoardGamesService>();
+            services.AddTransient<IClientsService, ClientsService>();
+            services.AddTransient<IGameRentalsService, GameRentalsService>();
             return services;
         }
     }

@@ -29,14 +29,14 @@ namespace BoardGameRentalApp.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<BoardGameDto> Create([FromBody]
+        public async Task<BoardGameDto> CreateAsync([FromBody]
             CreateBoardGameInput boardGameInput)
         {
             return await _service.CreateAsync(boardGameInput);
         }
 
         [HttpPut]
-        public async Task<BoardGameDto> Update([FromBody]
+        public async Task<BoardGameDto> UpdateAsync([FromBody]
             BoardGameDto boardGameInput)
         {
             return await _service.UpdateAsync(boardGameInput);
