@@ -13,6 +13,7 @@ namespace BoardGameRentalApp.Core.Services
         ClientDto Get(int id);
         Task<ClientDto> CreateAsync(CreateClientInput input);
         Task<ClientDto> UpdateAsync(ClientDto input);
+        Task<ClientDto> RemoveAsync(ClientDto input);
     }
 
     internal class ClientsService : IClientsService
@@ -38,6 +39,15 @@ namespace BoardGameRentalApp.Core.Services
             var client = _unitOfWork.ClientsRepository.Get(id);
             var output = _mapper.Map<ClientDto>(client);
             return output;
+        }
+
+        public async Task<ClientDto> RemoveAsync(ClientDto input)
+        {
+            var mappedEntity = _mapper.Map<Client>(input);
+            _unitOfWork.ClientsRepository.Remove(mappedEntity);
+            await _unitOfWork.SaveChangesAsync();
+            var result = _mapper.Map<ClientDto>(mappedEntity);
+            return result;
         }
 
         public async Task<ClientDto> CreateAsync(CreateClientInput input)
