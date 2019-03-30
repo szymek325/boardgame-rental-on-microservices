@@ -3,48 +3,48 @@ using System.Linq;
 using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
-using BoardGameRentalApp.DataAccess.SqlServer.Context;
+using BoardGameRentalApp.DataAccess.SqLite.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
+namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
 {
     internal class GameRentalsRepository : IGameRentalsRepository
     {
-        private readonly BoardGameRentalMsSqlContext _msSqlContext;
+        private readonly BoardGameRentalSqLiteContext _sqLiteContext;
 
-        public GameRentalsRepository(BoardGameRentalMsSqlContext msSqlContext)
+        public GameRentalsRepository(BoardGameRentalSqLiteContext sqLiteContext)
         {
-            _msSqlContext = msSqlContext;
+            _sqLiteContext = sqLiteContext;
         }
 
         public void Add(GameRental entity)
         {
-            _msSqlContext.GameRentals.Add(entity);
+            _sqLiteContext.GameRentals.Add(entity);
         }
 
         public async Task AddAsync(GameRental entity)
         {
-            await _msSqlContext.GameRentals.AddAsync(entity);
+            await _sqLiteContext.GameRentals.AddAsync(entity);
         }
 
         public void Remove(GameRental entity)
         {
-            _msSqlContext.GameRentals.Remove(entity);
+            _sqLiteContext.GameRentals.Remove(entity);
         }
 
         public GameRental Get(int? id)
         {
-            return _msSqlContext.GameRentals.FirstOrDefault(x => x.Id == id);
+            return _sqLiteContext.GameRentals.FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<GameRental> GetAll()
         {
-            return _msSqlContext.GameRentals.Include(x => x.BoardGame).Include(x => x.Client).ToList();
+            return _sqLiteContext.GameRentals.Include(x => x.BoardGame).Include(x => x.Client).ToList();
         }
 
         public void Update(GameRental entity)
         {
-            _msSqlContext.GameRentals.Update(entity);
+            _sqLiteContext.GameRentals.Update(entity);
         }
     }
 }

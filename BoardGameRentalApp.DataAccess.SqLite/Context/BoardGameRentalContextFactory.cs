@@ -5,22 +5,22 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace BoardGameRentalApp.DataAccess.SqlServer.Context
+namespace BoardGameRentalApp.DataAccess.SqLite.Context
 {
-    internal class BoardGameRentalContextFactory : IDesignTimeDbContextFactory<BoardGameRentalMsSqlContext>
+    internal class BoardGameRentalContextFactory : IDesignTimeDbContextFactory<BoardGameRentalSqLiteContext>
     {
-        public BoardGameRentalMsSqlContext CreateDbContext(string[] args)
+        public BoardGameRentalSqLiteContext CreateDbContext(string[] args)
         {
             var connectionString = GetConnectionString();
 
-            var builder = new DbContextOptionsBuilder<BoardGameRentalMsSqlContext>();
-            builder.UseSqlServer(
-                connectionString.SqlServer,
+            var builder = new DbContextOptionsBuilder<BoardGameRentalSqLiteContext>();
+            builder.UseSqlite(
+                connectionString.SqLite,
                 migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalMsSqlContext).GetTypeInfo().Assembly.GetName()
+                    migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalSqLiteContext).GetTypeInfo().Assembly.GetName()
                         .Name));
 
-            return new BoardGameRentalMsSqlContext(builder.Options);
+            return new BoardGameRentalSqLiteContext(builder.Options);
         }
 
         private static ConnectionStrings GetConnectionString()
