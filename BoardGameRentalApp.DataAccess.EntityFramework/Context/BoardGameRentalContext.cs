@@ -1,7 +1,7 @@
 ﻿using BoardGameRentalApp.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoardGameRentalApp.DataAccess.EntityFramework.Context
+namespace BoardGameRentalApp.DataAccess.SqlServer.Context
 {
     internal class BoardGameRentalContext : DbContext
     {
