@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using BoardGameRentalApp.Core.Dto;
 using BoardGameRentalApp.Core.Dto.BoardGames;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
@@ -15,7 +16,7 @@ namespace BoardGameRentalApp.Core.Services
         BoardGameDto Get(int id);
         Task<BoardGameDto> CreateAsync(CreateBoardGameInput input);
         Task<BoardGameDto> UpdateAsync(BoardGameDto input);
-        Task<BoardGameDto> RemoveAsync(BoardGameDto input);
+        Task<Result> RemoveAsync(int id);
     }
 
     internal class BoardGamesService : IBoardGamesService
@@ -68,13 +69,12 @@ namespace BoardGameRentalApp.Core.Services
             return result;
         }
 
-        public async Task<BoardGameDto> RemoveAsync(BoardGameDto input)
+        public async Task<Result> RemoveAsync(int id)
         {
-            var mappedEntity = _mapper.Map<BoardGame>(input);
-            _unitOfWork.BoardGamesRepository.Remove(mappedEntity);
+            var entity = _unitOfWork.BoardGamesRepository.Get(id);
+            _unitOfWork.BoardGamesRepository.Remove(entity);
             await _unitOfWork.SaveChangesAsync();
-            var result = _mapper.Map<BoardGameDto>(mappedEntity);
-            return result;
+            return new Result(true, $"BoardGame with id {id} was removed");
         }
     }
 }

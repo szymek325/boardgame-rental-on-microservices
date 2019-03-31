@@ -22,13 +22,13 @@ namespace BoardGameRentalApp.WebApi.Controllers
             return _service.GetAll();
         }
 
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{id}")]
         public ActionResult<GetAllGameRentalsOutput> GetRentalsForClient(int id)
         {
             return _service.GetForClient(id);
         }
 
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{id}")]
         public ActionResult<GetAllGameRentalsOutput> GetRentalsForBoardGame(int id)
         {
             return _service.GetForBoardGame(id);
