@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BoardGameRentalApp.DataAccess.SqlServer.Migrations
 {
-    [DbContext(typeof(BoardGameRentalMsSqlContext))]
+    [DbContext(typeof(SqlServerContext))]
     [Migration("20190322085908_InitDb")]
     partial class InitDb
     {

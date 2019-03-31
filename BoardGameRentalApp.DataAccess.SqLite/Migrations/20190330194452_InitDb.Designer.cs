@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BoardGameRentalApp.DataAccess.SqLite.Migrations
 {
-    [DbContext(typeof(BoardGameRentalSqLiteContext))]
+    [DbContext(typeof(SqLiteContext))]
     [Migration("20190330194452_InitDb")]
     partial class InitDb
     {

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BoardGameRentalApp.DataAccess.SqlServer.Context
 {
-    internal class BoardGameRentalMsSqlContext : DbContext
+    internal class SqlServerContext : DbContext
     {
-        public BoardGameRentalMsSqlContext(DbContextOptions options) : base(options)
+        public SqlServerContext(DbContextOptions options) : base(options)
         {
         }
 

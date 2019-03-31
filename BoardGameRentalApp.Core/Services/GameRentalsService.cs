@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using BoardGameRentalApp.Core.Dto.BoardGames;
 using BoardGameRentalApp.Core.Dto.GameRentals;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
+using BoardGameRentalApp.Core.Models;
 
 namespace BoardGameRentalApp.Core.Services
 {
@@ -32,7 +31,7 @@ namespace BoardGameRentalApp.Core.Services
         {
             var clients = _unitOfWork.GameRentalsRepository.GetAll();
             var output = _mapper.Map<IEnumerable<GameRentalDto>>(clients);
-            return new GetAllGameRentalsOutput();
+            return new GetAllGameRentalsOutput(output);
         }
 
         public GameRentalDto Get(int id)
@@ -45,6 +44,7 @@ namespace BoardGameRentalApp.Core.Services
         public async Task<GameRentalDto> CreateAsync(CreateGameRentalInput input)
         {
             var mappedEntity = _mapper.Map<GameRental>(input);
+            mappedEntity.Status = Status.InProgress;
             await _unitOfWork.GameRentalsRepository.AddAsync(mappedEntity);
             await _unitOfWork.SaveChangesAsync();
             var result = _mapper.Map<GameRentalDto>(mappedEntity);
@@ -57,7 +57,7 @@ namespace BoardGameRentalApp.Core.Services
             _unitOfWork.ClientsRepository.Update(mappedEntity);
             await _unitOfWork.SaveChangesAsync();
             var result = _mapper.Map<GameRentalDto>(mappedEntity);
-            return result;  
+            return result;
         }
     }
 }

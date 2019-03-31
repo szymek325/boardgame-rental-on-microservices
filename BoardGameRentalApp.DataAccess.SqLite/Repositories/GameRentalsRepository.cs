@@ -10,9 +10,9 @@ namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
 {
     internal class GameRentalsRepository : IGameRentalsRepository
     {
-        private readonly BoardGameRentalSqLiteContext _sqLiteContext;
+        private readonly SqLiteContext _sqLiteContext;
 
-        public GameRentalsRepository(BoardGameRentalSqLiteContext sqLiteContext)
+        public GameRentalsRepository(SqLiteContext sqLiteContext)
         {
             _sqLiteContext = sqLiteContext;
         }

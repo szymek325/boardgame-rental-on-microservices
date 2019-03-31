@@ -9,41 +9,41 @@ namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
 {
     internal class ClientsRepository : IClientsRepository
     {
-        private readonly BoardGameRentalMsSqlContext _msSqlContext;
+        private readonly SqlServerContext _msSqlServerContext;
 
-        public ClientsRepository(BoardGameRentalMsSqlContext msSqlContext)
+        public ClientsRepository(SqlServerContext msSqlServerContext)
         {
-            _msSqlContext = msSqlContext;
+            _msSqlServerContext = msSqlServerContext;
         }
 
         public IEnumerable<Client> GetAll()
         {
-            return _msSqlContext.Clients.ToList();
+            return _msSqlServerContext.Clients.ToList();
         }
 
         public Client Get(int? id)
         {
-            return _msSqlContext.Clients.FirstOrDefault(x => x.Id == id);
+            return _msSqlServerContext.Clients.FirstOrDefault(x => x.Id == id);
         }
 
         public void Add(Client entity)
         {
-            _msSqlContext.Clients.Add(entity);
+            _msSqlServerContext.Clients.Add(entity);
         }
 
         public async Task AddAsync(Client entity)
         {
-            await _msSqlContext.Clients.AddAsync(entity);
+            await _msSqlServerContext.Clients.AddAsync(entity);
         }
 
         public void Remove(Client entity)
         {
-            _msSqlContext.Clients.Remove(entity);
+            _msSqlServerContext.Clients.Remove(entity);
         }
 
         public void Update(Client entity)
         {
-            _msSqlContext.Clients.Update(entity);
+            _msSqlServerContext.Clients.Update(entity);
         }
     }
 }

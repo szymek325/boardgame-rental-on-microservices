@@ -6,39 +6,39 @@ namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
 {
     internal class UnitOfWork : IUnitOfWork
     {
-        private readonly BoardGameRentalMsSqlContext _msSqlContext;
+        private readonly SqlServerContext _msSqlServerContext;
         private IBoardGamesRepository _boardGamesRepository;
         private IClientsRepository _clientsRepository;
         private IGameRentalsRepository _gameRentalsRepository;
 
-        public UnitOfWork(BoardGameRentalMsSqlContext msSqlContext)
+        public UnitOfWork(SqlServerContext msSqlServerContext)
         {
-            _msSqlContext = msSqlContext;
+            _msSqlServerContext = msSqlServerContext;
         }
 
         public IBoardGamesRepository BoardGamesRepository
         {
-            get { return _boardGamesRepository = _boardGamesRepository ?? new BoardGamesRepository(_msSqlContext); }
+            get { return _boardGamesRepository = _boardGamesRepository ?? new BoardGamesRepository(_msSqlServerContext); }
         }
 
         public IClientsRepository ClientsRepository
         {
-            get { return _clientsRepository = _clientsRepository ?? new ClientsRepository(_msSqlContext); }
+            get { return _clientsRepository = _clientsRepository ?? new ClientsRepository(_msSqlServerContext); }
         }
 
         public IGameRentalsRepository GameRentalsRepository
         {
-            get { return _gameRentalsRepository = _gameRentalsRepository ?? new GameRentalsRepository(_msSqlContext); }
+            get { return _gameRentalsRepository = _gameRentalsRepository ?? new GameRentalsRepository(_msSqlServerContext); }
         }
 
         public void SaveChanges()
         {
-            _msSqlContext.SaveChanges();
+            _msSqlServerContext.SaveChanges();
         }
 
         public async Task SaveChangesAsync()
         {
-            await _msSqlContext.SaveChangesAsync();
+            await _msSqlServerContext.SaveChangesAsync();
         }
     }
 }

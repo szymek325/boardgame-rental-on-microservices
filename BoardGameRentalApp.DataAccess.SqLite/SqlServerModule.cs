@@ -16,9 +16,9 @@ namespace BoardGameRentalApp.DataAccess.SqLite
         public static IServiceCollection AddSqLiteModule(this IServiceCollection services,
             ConnectionStrings connectionStrings)
         {
-            services.AddDbContext<BoardGameRentalSqLiteContext>(options => options.UseSqlite(connectionStrings.SqLite,
+            services.AddDbContext<SqLiteContext>(options => options.UseSqlite(connectionStrings.SqLite,
                 migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalSqLiteContext).GetTypeInfo().Assembly.GetName()
+                    migrationsOptions.MigrationsAssembly(typeof(SqLiteContext).GetTypeInfo().Assembly.GetName()
                         .Name)));
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();

@@ -9,41 +9,41 @@ namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
 {
     internal class BoardGamesRepository : IBoardGamesRepository
     {
-        private readonly BoardGameRentalMsSqlContext _msSqlContext;
+        private readonly SqlServerContext _msSqlServerContext;
 
-        public BoardGamesRepository(BoardGameRentalMsSqlContext msSqlContext)
+        public BoardGamesRepository(SqlServerContext msSqlServerContext)
         {
-            _msSqlContext = msSqlContext;
+            _msSqlServerContext = msSqlServerContext;
         }
 
         public IEnumerable<BoardGame> GetAll()
         {
-            return _msSqlContext.BoardGames.ToList();
+            return _msSqlServerContext.BoardGames.ToList();
         }
 
         public BoardGame Get(int? id)
         {
-            return _msSqlContext.BoardGames.FirstOrDefault(x => x.Id == id);
+            return _msSqlServerContext.BoardGames.FirstOrDefault(x => x.Id == id);
         }
 
         public void Add(BoardGame entity)
         {
-            _msSqlContext.BoardGames.Add(entity);
+            _msSqlServerContext.BoardGames.Add(entity);
         }
 
         public async Task AddAsync(BoardGame entity)
         {
-            await _msSqlContext.BoardGames.AddAsync(entity);
+            await _msSqlServerContext.BoardGames.AddAsync(entity);
         }
 
         public void Remove(BoardGame entity)
         {
-            _msSqlContext.BoardGames.Remove(entity);
+            _msSqlServerContext.BoardGames.Remove(entity);
         }
 
         public void Update(BoardGame entity)
         {
-            _msSqlContext.BoardGames.Update(entity);
+            _msSqlServerContext.BoardGames.Update(entity);
         }
     }
 }
