@@ -3,50 +3,54 @@ using System.Linq;
 using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
-using BoardGameRentalApp.DataAccess.SqLite.Context;
+using BoardGameRentalApp.Core.Models;
+using BoardGameRentalApp.DataAccess.EntityFramework.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
+namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
 {
     internal class BoardGamesRepository : IBoardGamesRepository
     {
-        private readonly SqLiteContext _sqLiteContext;
+        private readonly BoardGamesShopContext _gameRentalContext;
 
-        public BoardGamesRepository(SqLiteContext sqLiteContext)
+        public BoardGamesRepository(BoardGamesShopContext gameRentalContext)
         {
-            _sqLiteContext = sqLiteContext;
+            _gameRentalContext = gameRentalContext;
         }
 
         public IEnumerable<BoardGame> GetAll()
         {
-            return _sqLiteContext.BoardGames.ToList();
+            return _gameRentalContext.BoardGames.ToList();
         }
 
-        public BoardGame GetWithDetails(int? id)
+        public IEnumerable<BoardGame> GetAllAvailableForRental()
         {
-            return _sqLiteContext.BoardGames
+            return _gameRentalContext.BoardGames
+                .Include(x => x.GameRentals)
+                .Where(x => x.GameRentals.All(g => g.Status != Status.InProgress))
+                .ToList();
+        }
+
+        public BoardGame GetWithGameRentals(int? id)
+        {
+            return _gameRentalContext.BoardGames
                 .Include(x => x.GameRentals)
                 .FirstOrDefault(x => x.Id == id);
         }
 
-        public void Add(BoardGame entity)
-        {
-            _sqLiteContext.BoardGames.Add(entity);
-        }
-
         public async Task AddAsync(BoardGame entity)
         {
-            await _sqLiteContext.BoardGames.AddAsync(entity);
+            await _gameRentalContext.BoardGames.AddAsync(entity);
         }
 
         public void Remove(BoardGame entity)
         {
-            _sqLiteContext.BoardGames.Remove(entity);
+            _gameRentalContext.BoardGames.Remove(entity);
         }
 
         public void Update(BoardGame entity)
         {
-            _sqLiteContext.BoardGames.Update(entity);
+            _gameRentalContext.BoardGames.Update(entity);
         }
     }
 }

@@ -1,44 +1,44 @@
 ﻿using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
-using BoardGameRentalApp.DataAccess.SqLite.Context;
+using BoardGameRentalApp.DataAccess.EntityFramework.Context;
 
-namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
+namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
 {
     internal class UnitOfWork : IUnitOfWork
     {
-        private readonly SqLiteContext _sqLiteContext;
+        private readonly BoardGamesShopContext _boardGamesShopContext;
         private IBoardGamesRepository _boardGamesRepository;
         private IClientsRepository _clientsRepository;
         private IGameRentalsRepository _gameRentalsRepository;
 
-        public UnitOfWork(SqLiteContext sqLiteContext)
+        public UnitOfWork(BoardGamesShopContext boardGamesShopContext)
         {
-            _sqLiteContext = sqLiteContext;
+            _boardGamesShopContext = boardGamesShopContext;
         }
 
         public IBoardGamesRepository BoardGamesRepository
         {
-            get { return _boardGamesRepository = _boardGamesRepository ?? new BoardGamesRepository(_sqLiteContext); }
+            get { return _boardGamesRepository = _boardGamesRepository ?? new BoardGamesRepository(_boardGamesShopContext); }
         }
 
         public IClientsRepository ClientsRepository
         {
-            get { return _clientsRepository = _clientsRepository ?? new ClientsRepository(_sqLiteContext); }
+            get { return _clientsRepository = _clientsRepository ?? new ClientsRepository(_boardGamesShopContext); }
         }
 
         public IGameRentalsRepository GameRentalsRepository
         {
-            get { return _gameRentalsRepository = _gameRentalsRepository ?? new GameRentalsRepository(_sqLiteContext); }
+            get { return _gameRentalsRepository = _gameRentalsRepository ?? new GameRentalsRepository(_boardGamesShopContext); }
         }
 
         public void SaveChanges()
         {
-            _sqLiteContext.SaveChanges();
+            _boardGamesShopContext.SaveChanges();
         }
 
         public async Task SaveChangesAsync()
         {
-            await _sqLiteContext.SaveChangesAsync();
+            await _boardGamesShopContext.SaveChangesAsync();
         }
     }
 }

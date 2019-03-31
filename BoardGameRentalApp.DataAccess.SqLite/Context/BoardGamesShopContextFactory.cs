@@ -5,22 +5,29 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace BoardGameRentalApp.DataAccess.SqlServer.Context
+namespace BoardGameRentalApp.DataAccess.EntityFramework.Context
 {
-    internal class SqlServerContextFactory : IDesignTimeDbContextFactory<SqlServerContext>
+    internal class BoardGamesShopContextFactory : IDesignTimeDbContextFactory<BoardGamesShopContext>
     {
-        public SqlServerContext CreateDbContext(string[] args)
+        public BoardGamesShopContext CreateDbContext(string[] args)
         {
-            var connectionString = GetConnectionString();
+            var connectionStrings = GetConnectionString();
+            var builder = new DbContextOptionsBuilder<BoardGamesShopContext>();
 
-            var builder = new DbContextOptionsBuilder<SqlServerContext>();
-            builder.UseSqlServer(
-                connectionString.SqlServer,
-                migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(SqlServerContext).GetTypeInfo().Assembly.GetName()
-                        .Name));
+            if (connectionStrings.UseSqLite)
+                builder.UseSqlite(connectionStrings.SqLite,
+                    migrationsOptions =>
+                        migrationsOptions.MigrationsAssembly(typeof(BoardGamesShopContext).GetTypeInfo().Assembly
+                            .GetName()
+                            .Name));
+            else
+                builder.UseSqlServer(connectionStrings.SqlServer,
+                    migrationsOptions =>
+                        migrationsOptions.MigrationsAssembly(typeof(BoardGamesShopContext).GetTypeInfo().Assembly
+                            .GetName()
+                            .Name));
 
-            return new SqlServerContext(builder.Options);
+            return new BoardGamesShopContext(builder.Options);
         }
 
         private static ConnectionStrings GetConnectionString()

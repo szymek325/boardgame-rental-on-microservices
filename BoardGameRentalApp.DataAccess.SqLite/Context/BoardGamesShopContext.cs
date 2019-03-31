@@ -1,11 +1,12 @@
-﻿using BoardGameRentalApp.Core.Entities;
+﻿using System;
+using BoardGameRentalApp.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoardGameRentalApp.DataAccess.SqlServer.Context
+namespace BoardGameRentalApp.DataAccess.EntityFramework.Context
 {
-    internal class SqlServerContext : DbContext
+    internal class BoardGamesShopContext : DbContext
     {
-        public SqlServerContext(DbContextOptions options) : base(options)
+        public BoardGamesShopContext(DbContextOptions options) : base(options)
         {
         }
 
@@ -20,11 +21,7 @@ namespace BoardGameRentalApp.DataAccess.SqlServer.Context
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
                 modelBuilder.Entity(
                     entityType.Name,
-                    x =>
-                    {
-                        x.Property(nameof(BaseEntity.CreationTime))
-                            .HasDefaultValueSql("getutcdate()");
-                    });
+                    x => { x.Property(nameof(BaseEntity.CreationTime)).HasDefaultValue(DateTime.UtcNow); });
         }
     }
 }
