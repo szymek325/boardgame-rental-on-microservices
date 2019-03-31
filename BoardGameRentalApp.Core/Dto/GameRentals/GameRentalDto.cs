@@ -10,6 +10,7 @@ namespace BoardGameRentalApp.Core.Dto.GameRentals
         public int Id { get; set; }
         public int ClientId { get; set; }
         public int BoardGameId { get; set; }
+        public float ChargedDeposit { get; set; }
         public Status Status { get; set; }
         public float PaymentAmount { get; set; }
         public BoardGameDto BoardGame { get; set; }

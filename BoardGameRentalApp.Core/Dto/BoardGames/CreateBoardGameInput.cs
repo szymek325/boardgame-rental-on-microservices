@@ -11,6 +11,6 @@ namespace BoardGameRentalApp.Core.Dto.BoardGames
         public float PricePerDay { get; set; }
 
         [Required]
-        public float Bail { get; set; }
+        public float SuggestedDeposit { get; set; }
     }
 }
