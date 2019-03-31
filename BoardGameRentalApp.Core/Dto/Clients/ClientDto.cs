@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using BoardGameRentalApp.Core.Dto.GameRentals;
 
 namespace BoardGameRentalApp.Core.Dto.Clients
 {
@@ -8,6 +10,7 @@ namespace BoardGameRentalApp.Core.Dto.Clients
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ContactNumber { get; set; }
+        public ICollection<GameRentalDto> GameRentals { get; set; }
         public DateTime CreationTime { get; set; }
     }
 }

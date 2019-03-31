@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.SqlServer.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
 {
@@ -21,9 +22,11 @@ namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
             return _msSqlServerContext.Clients.ToList();
         }
 
-        public Client Get(int? id)
+        public Client GetWithDetails(int? id)
         {
-            return _msSqlServerContext.Clients.FirstOrDefault(x => x.Id == id);
+            return _msSqlServerContext.Clients
+                .Include(x => x.GameRentals)
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public void Add(Client entity)

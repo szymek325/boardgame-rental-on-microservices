@@ -1,4 +1,6 @@
 ﻿using System;
+using BoardGameRentalApp.Core.Dto.BoardGames;
+using BoardGameRentalApp.Core.Dto.Clients;
 using BoardGameRentalApp.Core.Models;
 
 namespace BoardGameRentalApp.Core.Dto.GameRentals
@@ -10,6 +12,8 @@ namespace BoardGameRentalApp.Core.Dto.GameRentals
         public int BoardGameId { get; set; }
         public Status Status { get; set; }
         public float PaymentAmount { get; set; }
+        public BoardGameDto BoardGame { get; set; }
+        public ClientDto Client { get; set; }
         public DateTime CreationTime { get; set; }
     }
 }

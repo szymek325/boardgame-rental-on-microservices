@@ -36,7 +36,7 @@ namespace BoardGameRentalApp.Core.Services
 
         public GameRentalDto Get(int id)
         {
-            var gameRental = _unitOfWork.GameRentalsRepository.Get(id);
+            var gameRental = _unitOfWork.GameRentalsRepository.GetWithDetails(id);
             var output = _mapper.Map<GameRentalDto>(gameRental);
             return output;
         }

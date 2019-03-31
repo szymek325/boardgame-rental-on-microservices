@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.SqLite.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
 {
@@ -21,9 +22,11 @@ namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
             return _sqLiteContext.BoardGames.ToList();
         }
 
-        public BoardGame Get(int? id)
+        public BoardGame GetWithDetails(int? id)
         {
-            return _sqLiteContext.BoardGames.FirstOrDefault(x => x.Id == id);
+            return _sqLiteContext.BoardGames
+                .Include(x => x.GameRentals)
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public void Add(BoardGame entity)

@@ -7,7 +7,7 @@ namespace BoardGameRentalApp.Core.Interfaces.DataAccess
     public interface IClientsRepository
     {
         IEnumerable<Client> GetAll();
-        Client Get(int? id);
+        Client GetWithDetails(int? id);
         void Add(Client entity);
         Task AddAsync(Client entity);
         void Remove(Client entity);

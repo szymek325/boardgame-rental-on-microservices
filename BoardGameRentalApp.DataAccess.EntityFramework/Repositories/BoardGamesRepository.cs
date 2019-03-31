@@ -21,7 +21,7 @@ namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
             return _msSqlServerContext.BoardGames.ToList();
         }
 
-        public BoardGame Get(int? id)
+        public BoardGame GetWithDetails(int? id)
         {
             return _msSqlServerContext.BoardGames.FirstOrDefault(x => x.Id == id);
         }

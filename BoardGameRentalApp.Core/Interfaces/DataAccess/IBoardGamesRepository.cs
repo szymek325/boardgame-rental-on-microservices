@@ -7,7 +7,7 @@ namespace BoardGameRentalApp.Core.Interfaces.DataAccess
     public interface IBoardGamesRepository
     {
         IEnumerable<BoardGame> GetAll();
-        BoardGame Get(int? id);
+        BoardGame GetWithDetails(int? id);
         void Add(BoardGame entity);
         Task AddAsync(BoardGame entity);
         void Remove(BoardGame entity);

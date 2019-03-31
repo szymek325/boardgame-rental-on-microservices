@@ -32,14 +32,17 @@ namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
             _sqLiteContext.GameRentals.Remove(entity);
         }
 
-        public GameRental Get(int? id)
+        public GameRental GetWithDetails(int? id)
         {
-            return _sqLiteContext.GameRentals.FirstOrDefault(x => x.Id == id);
+            return _sqLiteContext.GameRentals
+                .Include(x => x.BoardGame)  
+                .Include(x => x.Client)
+                .FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<GameRental> GetAll()
         {
-            return _sqLiteContext.GameRentals.Include(x => x.BoardGame).Include(x => x.Client).ToList();
+            return _sqLiteContext.GameRentals.ToList();
         }
 
         public void Update(GameRental entity)
