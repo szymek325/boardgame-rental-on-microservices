@@ -36,7 +36,7 @@ namespace BoardGameRentalApp.Core.Services
 
         public ClientDto Get(int id)
         {
-            var client = _unitOfWork.ClientsRepository.Get(id);
+            var client = _unitOfWork.ClientsRepository.GetWithDetails(id);
             var output = _mapper.Map<ClientDto>(client);
             return output;
         }

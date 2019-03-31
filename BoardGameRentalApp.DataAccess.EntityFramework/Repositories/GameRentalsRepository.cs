@@ -32,14 +32,17 @@ namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
             _msSqlServerContext.GameRentals.Remove(entity);
         }
 
-        public GameRental Get(int? id)
+        public GameRental GetWithDetails(int? id)
         {
-            return _msSqlServerContext.GameRentals.FirstOrDefault(x => x.Id == id);
-        }
+            return _msSqlServerContext.GameRentals
+                .Include(x => x.BoardGame)
+                .Include(x => x.Client)
+                .FirstOrDefault(x => x.Id == id);
+        }   
 
         public IEnumerable<GameRental> GetAll()
         {
-            return _msSqlServerContext.GameRentals.Include(x => x.BoardGame).Include(x => x.Client).ToList();
+            return _msSqlServerContext.GameRentals.ToList();
         }
 
         public void Update(GameRental entity)
