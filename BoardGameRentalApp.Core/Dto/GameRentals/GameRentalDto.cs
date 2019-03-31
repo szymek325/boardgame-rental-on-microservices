@@ -16,5 +16,17 @@ namespace BoardGameRentalApp.Core.Dto.GameRentals
         public BoardGameDto BoardGame { get; set; }
         public ClientDto Client { get; set; }
         public DateTime CreationTime { get; set; }
+
+        public float MoneyToCharge
+        {
+            get
+            {
+                if (BoardGame == null)
+                    return 0;
+                var timePassed = DateTime.UtcNow - CreationTime;
+                var moneyToPay = timePassed.Days * BoardGame.PricePerDay;
+                return moneyToPay;
+            }
+        }
     }
 }
