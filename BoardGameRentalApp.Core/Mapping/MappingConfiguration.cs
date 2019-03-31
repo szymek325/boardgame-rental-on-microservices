@@ -24,7 +24,6 @@ namespace BoardGameRentalApp.Core.Mapping
                 .ForMember(dest => dest.PricePerDay, opt => opt.MapFrom(src => src.PricePerDay))
                 .ForMember(dest => dest.Bail, opt => opt.MapFrom(src => src.Bail))
                 .ForMember(dest => dest.CreationTime, opt => opt.MapFrom(src => src.CreationTime))
-                .ForMember(dest => dest.GameRentals, opt => opt.MapFrom(src => src.GameRentals))
                 .ReverseMap();
 
             CreateMap<CreateClientInput, Client>()
@@ -41,7 +40,6 @@ namespace BoardGameRentalApp.Core.Mapping
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
                 .ForMember(dest => dest.ContactNumber, opt => opt.MapFrom(src => src.ContactNumber))
                 .ForMember(dest => dest.CreationTime, opt => opt.MapFrom(src => src.CreationTime))
-                .ForMember(dest => dest.GameRentals, opt => opt.MapFrom(src => src.GameRentals))
                 .ReverseMap();
 
             CreateMap<CreateGameRentalInput, GameRental>()

@@ -42,17 +42,17 @@ namespace BoardGameRentalApp.WebApi.Controllers
             return await _service.CreateAsync(boardGameInput);
         }
 
-        [HttpPut("[action]")]
-        public async Task<BoardGameDto> UpdateBoardGameAsync([FromBody]
-            BoardGameDto boardGameInput)
-        {
-            return await _service.UpdateAsync(boardGameInput);
-        }
-
         [HttpDelete("[action]/{id}")]
         public async Task<Result> RemoveBoardGameAsync(int id)
         {
             return await _service.RemoveAsync(id);
         }
+
+        //[HttpPut("[action]")]
+        //public async Task<BoardGameDto> UpdateBoardGameAsync([FromBody]
+        //    BoardGameDto boardGameInput)
+        //{
+        //    return await _service.UpdateAsync(boardGameInput);
+        //}
     }
 }
