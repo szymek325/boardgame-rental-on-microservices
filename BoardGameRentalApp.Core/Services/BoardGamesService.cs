@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BoardGameRentalApp.Core.Dto.BoardGames;
@@ -10,6 +11,7 @@ namespace BoardGameRentalApp.Core.Services
     public interface IBoardGamesService
     {
         GetAllBoardGamesOutput GetAll();
+        GetAllBoardGamesOutput GetAllAvailableForRental();
         BoardGameDto Get(int id);
         Task<BoardGameDto> CreateAsync(CreateBoardGameInput input);
         Task<BoardGameDto> UpdateAsync(BoardGameDto input);
@@ -29,14 +31,21 @@ namespace BoardGameRentalApp.Core.Services
 
         public GetAllBoardGamesOutput GetAll()
         {
-            var boardGames = _unitOfWork.BoardGamesRepository.GetAll();
+            var boardGames = _unitOfWork.BoardGamesRepository.GetAll().ToList();
+            var output = _mapper.Map<IEnumerable<BoardGameDto>>(boardGames);
+            return new GetAllBoardGamesOutput(output);
+        }
+
+        public GetAllBoardGamesOutput GetAllAvailableForRental()
+        {
+            var boardGames = _unitOfWork.BoardGamesRepository.GetAllAvailableForRental();
             var output = _mapper.Map<IEnumerable<BoardGameDto>>(boardGames);
             return new GetAllBoardGamesOutput(output);
         }
 
         public BoardGameDto Get(int id)
         {
-            var boardGame = _unitOfWork.BoardGamesRepository.GetWithGameRentals(id);
+            var boardGame = _unitOfWork.BoardGamesRepository.Get(id);
             var output = _mapper.Map<BoardGameDto>(boardGame);
             return output;
         }
