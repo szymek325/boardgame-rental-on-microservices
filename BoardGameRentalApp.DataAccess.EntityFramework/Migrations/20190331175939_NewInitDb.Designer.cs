@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
 {
     [DbContext(typeof(BoardGamesShopContext))]
-    [Migration("20190331100457_InitDb")]
-    partial class InitDb
+    [Migration("20190331175939_NewInitDb")]
+    partial class NewInitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,15 +24,15 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<float>("Bail");
-
                     b.Property<DateTime>("CreationTime")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2019, 3, 31, 10, 4, 57, 358, DateTimeKind.Utc).AddTicks(3980));
+                        .HasDefaultValue(new DateTime(2019, 3, 31, 17, 59, 39, 112, DateTimeKind.Utc).AddTicks(7976));
 
                     b.Property<string>("Name");
 
                     b.Property<float>("PricePerDay");
+
+                    b.Property<float>("SuggestedDeposit");
 
                     b.HasKey("Id");
 
@@ -48,7 +48,7 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
 
                     b.Property<DateTime>("CreationTime")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2019, 3, 31, 10, 4, 57, 361, DateTimeKind.Utc).AddTicks(7882));
+                        .HasDefaultValue(new DateTime(2019, 3, 31, 17, 59, 39, 116, DateTimeKind.Utc).AddTicks(2455));
 
                     b.Property<string>("FirstName");
 
@@ -66,11 +66,13 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
 
                     b.Property<int>("BoardGameId");
 
+                    b.Property<float>("ChargedDeposit");
+
                     b.Property<int>("ClientId");
 
                     b.Property<DateTime>("CreationTime")
                         .ValueGeneratedOnAdd()
-                        .HasDefaultValue(new DateTime(2019, 3, 31, 10, 4, 57, 361, DateTimeKind.Utc).AddTicks(8052));
+                        .HasDefaultValue(new DateTime(2019, 3, 31, 17, 59, 39, 116, DateTimeKind.Utc).AddTicks(2630));
 
                     b.Property<float>("PaymentAmount");
 
