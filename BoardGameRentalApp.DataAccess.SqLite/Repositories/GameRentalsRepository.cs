@@ -3,51 +3,41 @@ using System.Linq;
 using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
-using BoardGameRentalApp.DataAccess.SqLite.Context;
+using BoardGameRentalApp.DataAccess.EntityFramework.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
+namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
 {
     internal class GameRentalsRepository : IGameRentalsRepository
     {
-        private readonly SqLiteContext _sqLiteContext;
+        private readonly BoardGamesShopContext _boardGamesShopContext;
 
-        public GameRentalsRepository(SqLiteContext sqLiteContext)
+        public GameRentalsRepository(BoardGamesShopContext boardGamesShopContext)
         {
-            _sqLiteContext = sqLiteContext;
-        }
-
-        public void Add(GameRental entity)
-        {
-            _sqLiteContext.GameRentals.Add(entity);
+            _boardGamesShopContext = boardGamesShopContext;
         }
 
         public async Task AddAsync(GameRental entity)
         {
-            await _sqLiteContext.GameRentals.AddAsync(entity);
-        }
-
-        public void Remove(GameRental entity)
-        {
-            _sqLiteContext.GameRentals.Remove(entity);
+            await _boardGamesShopContext.GameRentals.AddAsync(entity);
         }
 
         public GameRental GetWithDetails(int? id)
         {
-            return _sqLiteContext.GameRentals
-                .Include(x => x.BoardGame)  
+            return _boardGamesShopContext.GameRentals
+                .Include(x => x.BoardGame)
                 .Include(x => x.Client)
                 .FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<GameRental> GetAll()
         {
-            return _sqLiteContext.GameRentals.ToList();
+            return _boardGamesShopContext.GameRentals.ToList();
         }
 
         public void Update(GameRental entity)
         {
-            _sqLiteContext.GameRentals.Update(entity);
+            _boardGamesShopContext.GameRentals.Update(entity);
         }
     }
 }

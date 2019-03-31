@@ -14,8 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BoardGameRentalApp.Core\BoardGameRentalApp.Core.csproj" />
-    <ProjectReference Include="..\BoardGameRentalApp.DataAccess.EntityFramework\BoardGameRentalApp.DataAccess.SqlServer.csproj" />
-    <ProjectReference Include="..\BoardGameRentalApp.DataAccess.SqLite\BoardGameRentalApp.DataAccess.SqLite.csproj" />
+    <ProjectReference Include="..\BoardGameRentalApp.DataAccess.SqLite\BoardGameRentalApp.DataAccess.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>

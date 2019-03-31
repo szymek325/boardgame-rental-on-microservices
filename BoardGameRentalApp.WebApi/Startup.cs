@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using BoardGameRentalApp.Core;
 using BoardGameRentalApp.Core.Configuration;
-using BoardGameRentalApp.DataAccess.SqlServer;
-using BoardGameRentalApp.DataAccess.SqLite;
+using BoardGameRentalApp.DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -36,11 +35,8 @@ namespace BoardGameRentalApp.WebApi
 
             var connectionStrings = new ConnectionStrings();
             Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
-            if (connectionStrings.UseSqLite)
-                services.AddSqLiteModule(connectionStrings);
-            else
-                services.AddSqlServerModule(connectionStrings);
 
+            services.AddDataAccessModule(connectionStrings);
             services.AddCoreModule();
             services.AddAutoMapper();
         }

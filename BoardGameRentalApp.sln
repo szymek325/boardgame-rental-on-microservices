@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.WebApi",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.Core", "BoardGameRentalApp.Core\BoardGameRentalApp.Core.csproj", "{C9CA88BA-D9B3-4943-9862-7C07913E9FEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.DataAccess.SqlServer", "BoardGameRentalApp.DataAccess.EntityFramework\BoardGameRentalApp.DataAccess.SqlServer.csproj", "{05BFA379-FF4B-4240-B320-3951445F8BD3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardGameRentalApp.DataAccess.SqLite", "BoardGameRentalApp.DataAccess.SqLite\BoardGameRentalApp.DataAccess.SqLite.csproj", "{EBB0AFE0-5652-490C-8FA3-1BB1057C81E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.DataAccess.EntityFramework", "BoardGameRentalApp.DataAccess.SqLite\BoardGameRentalApp.DataAccess.EntityFramework.csproj", "{EBB0AFE0-5652-490C-8FA3-1BB1057C81E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{C9CA88BA-D9B3-4943-9862-7C07913E9FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9CA88BA-D9B3-4943-9862-7C07913E9FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9CA88BA-D9B3-4943-9862-7C07913E9FEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05BFA379-FF4B-4240-B320-3951445F8BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05BFA379-FF4B-4240-B320-3951445F8BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05BFA379-FF4B-4240-B320-3951445F8BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05BFA379-FF4B-4240-B320-3951445F8BD3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EBB0AFE0-5652-490C-8FA3-1BB1057C81E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EBB0AFE0-5652-490C-8FA3-1BB1057C81E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBB0AFE0-5652-490C-8FA3-1BB1057C81E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
