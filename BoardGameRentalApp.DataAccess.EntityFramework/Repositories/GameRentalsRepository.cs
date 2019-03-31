@@ -17,22 +17,36 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
             _boardGamesShopContext = boardGamesShopContext;
         }
 
-        public async Task AddAsync(GameRental entity)
+        public IQueryable<GameRental> GetAll()
         {
-            await _boardGamesShopContext.GameRentals.AddAsync(entity);
+            return _boardGamesShopContext.GameRentals;
+        }
+
+        public IEnumerable<GameRental> GetForClient(int? clientId)
+        {
+            return GetAll()
+                .Include(x => x.BoardGame)
+                .Where(x => x.ClientId == clientId);
+        }
+
+        public IEnumerable<GameRental> GetForBoardGame(int? boardGameId)
+        {
+            return GetAll()
+                .Include(x => x.Client)
+                .Where(x => x.ClientId == boardGameId);
         }
 
         public GameRental GetWithDetails(int? id)
         {
-            return _boardGamesShopContext.GameRentals
+            return GetAll()
                 .Include(x => x.BoardGame)
                 .Include(x => x.Client)
                 .FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<GameRental> GetAll()
+        public async Task AddAsync(GameRental entity)
         {
-            return _boardGamesShopContext.GameRentals.ToList();
+            await _boardGamesShopContext.GameRentals.AddAsync(entity);
         }
 
         public void Update(GameRental entity)

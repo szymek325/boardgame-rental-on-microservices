@@ -26,7 +26,6 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
         public IEnumerable<BoardGame> GetAllAvailableForRental()
         {
             return GetAll()
-                .Include(x => x.GameRentals)
                 .Where(x => x.GameRentals
                     .All(g => g.Status != Status.InProgress));
         }

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
-using Microsoft.EntityFrameworkCore;
 
 namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
 {
@@ -22,6 +21,11 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
             return _boardGamesShopContext.Clients.ToList();
         }
 
+        public Client Get(int? id)
+        {
+            return GetAll().FirstOrDefault(x => x.Id == id);
+        }
+
         public async Task AddAsync(Client entity)
         {
             await _boardGamesShopContext.Clients.AddAsync(entity);
@@ -35,13 +39,6 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Repositories
         public void Update(Client entity)
         {
             _boardGamesShopContext.Clients.Update(entity);
-        }
-
-        public Client GetWithGameRentals(int? id)
-        {
-            return _boardGamesShopContext.Clients
-                .Include(x => x.GameRentals)
-                .FirstOrDefault(x => x.Id == id);
         }
     }
 }
