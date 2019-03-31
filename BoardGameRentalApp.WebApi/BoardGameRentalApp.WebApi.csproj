@@ -17,4 +17,10 @@
     <ProjectReference Include="..\BoardGameRentalApp.DataAccess.EntityFramework\BoardGameRentalApp.DataAccess.EntityFramework.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="boardgames.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
