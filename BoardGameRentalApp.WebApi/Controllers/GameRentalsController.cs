@@ -16,26 +16,26 @@ namespace BoardGameRentalApp.WebApi.Controllers
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet("[action]")]
         public ActionResult<GetAllGameRentalsOutput> GetAll()
         {
             return _service.GetAll();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("[action]/{id}")]
         public ActionResult<GameRentalDto> Get(int id)
         {
             return _service.Get(id);
         }
 
-        [HttpPost]
+        [HttpPost("[action]")]
         public async Task<GameRentalDto> CreateAsync([FromBody]
             CreateGameRentalInput gameRentalInput)
         {
             return await _service.CreateAsync(gameRentalInput);
         }
 
-        [HttpPut]
+        [HttpPut("[action]")]
         public async Task<GameRentalDto> UpdateAsync([FromBody]
             GameRentalDto gameRentalInput)
         {
