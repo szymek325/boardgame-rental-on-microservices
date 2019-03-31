@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BoardGameRentalApp.Core.Dto;
 using BoardGameRentalApp.Core.Dto.BoardGames;
 using BoardGameRentalApp.Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -48,11 +49,10 @@ namespace BoardGameRentalApp.WebApi.Controllers
             return await _service.UpdateAsync(boardGameInput);
         }
 
-        [HttpDelete("[action]")]
-        public async Task<BoardGameDto> RemoveBoardGameAsync([FromBody]
-            BoardGameDto clientInput)
+        [HttpDelete("[action]/{id}")]
+        public async Task<Result> RemoveBoardGameAsync(int id)
         {
-            return await _service.RemoveAsync(clientInput);
+            return await _service.RemoveAsync(id);
         }
     }
 }
