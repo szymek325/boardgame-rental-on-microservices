@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BoardGameRentalApp.Core.Entities;
 
@@ -6,12 +7,11 @@ namespace BoardGameRentalApp.Core.Interfaces.DataAccess
 {
     public interface IBoardGamesRepository
     {
-        IEnumerable<BoardGame> GetAll();
+        IQueryable<BoardGame> GetAll();
         IEnumerable<BoardGame> GetAllAvailableForRental();
-        BoardGame GetWithGameRentals(int? id);
+        BoardGame Get(int? id);
         Task AddAsync(BoardGame entity);
         void Remove(BoardGame entity);
         void Update(BoardGame entity);
     }
 }
-
