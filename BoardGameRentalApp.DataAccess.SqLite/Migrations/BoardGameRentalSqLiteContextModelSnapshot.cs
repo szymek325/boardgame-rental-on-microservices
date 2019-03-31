@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BoardGameRentalApp.DataAccess.SqLite.Migrations
 {
-    [DbContext(typeof(BoardGameRentalSqLiteContext))]
+    [DbContext(typeof(SqLiteContext))]
     partial class BoardGameRentalSqLiteContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

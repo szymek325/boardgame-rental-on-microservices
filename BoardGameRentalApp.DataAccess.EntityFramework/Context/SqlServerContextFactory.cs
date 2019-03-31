@@ -7,20 +7,20 @@ using Microsoft.Extensions.Configuration;
 
 namespace BoardGameRentalApp.DataAccess.SqlServer.Context
 {
-    internal class BoardGameRentalContextFactory : IDesignTimeDbContextFactory<BoardGameRentalMsSqlContext>
+    internal class SqlServerContextFactory : IDesignTimeDbContextFactory<SqlServerContext>
     {
-        public BoardGameRentalMsSqlContext CreateDbContext(string[] args)
+        public SqlServerContext CreateDbContext(string[] args)
         {
             var connectionString = GetConnectionString();
 
-            var builder = new DbContextOptionsBuilder<BoardGameRentalMsSqlContext>();
+            var builder = new DbContextOptionsBuilder<SqlServerContext>();
             builder.UseSqlServer(
                 connectionString.SqlServer,
                 migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalMsSqlContext).GetTypeInfo().Assembly.GetName()
+                    migrationsOptions.MigrationsAssembly(typeof(SqlServerContext).GetTypeInfo().Assembly.GetName()
                         .Name));
 
-            return new BoardGameRentalMsSqlContext(builder.Options);
+            return new SqlServerContext(builder.Options);
         }
 
         private static ConnectionStrings GetConnectionString()

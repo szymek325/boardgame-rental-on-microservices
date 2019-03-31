@@ -7,20 +7,20 @@ using Microsoft.Extensions.Configuration;
 
 namespace BoardGameRentalApp.DataAccess.SqLite.Context
 {
-    internal class BoardGameRentalContextFactory : IDesignTimeDbContextFactory<BoardGameRentalSqLiteContext>
+    internal class SqLiteContextFactory : IDesignTimeDbContextFactory<SqLiteContext>
     {
-        public BoardGameRentalSqLiteContext CreateDbContext(string[] args)
+        public SqLiteContext CreateDbContext(string[] args)
         {
             var connectionString = GetConnectionString();
 
-            var builder = new DbContextOptionsBuilder<BoardGameRentalSqLiteContext>();
+            var builder = new DbContextOptionsBuilder<SqLiteContext>();
             builder.UseSqlite(
                 connectionString.SqLite,
                 migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalSqLiteContext).GetTypeInfo().Assembly.GetName()
+                    migrationsOptions.MigrationsAssembly(typeof(SqLiteContext).GetTypeInfo().Assembly.GetName()
                         .Name));
 
-            return new BoardGameRentalSqLiteContext(builder.Options);
+            return new SqLiteContext(builder.Options);
         }
 
         private static ConnectionStrings GetConnectionString()

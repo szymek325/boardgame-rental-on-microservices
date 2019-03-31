@@ -6,12 +6,12 @@ namespace BoardGameRentalApp.DataAccess.SqLite.Repositories
 {
     internal class UnitOfWork : IUnitOfWork
     {
-        private readonly BoardGameRentalSqLiteContext _sqLiteContext;
+        private readonly SqLiteContext _sqLiteContext;
         private IBoardGamesRepository _boardGamesRepository;
         private IClientsRepository _clientsRepository;
         private IGameRentalsRepository _gameRentalsRepository;
 
-        public UnitOfWork(BoardGameRentalSqLiteContext sqLiteContext)
+        public UnitOfWork(SqLiteContext sqLiteContext)
         {
             _sqLiteContext = sqLiteContext;
         }

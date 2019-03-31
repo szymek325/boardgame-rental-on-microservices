@@ -10,41 +10,41 @@ namespace BoardGameRentalApp.DataAccess.SqlServer.Repositories
 {
     internal class GameRentalsRepository : IGameRentalsRepository
     {
-        private readonly BoardGameRentalMsSqlContext _msSqlContext;
+        private readonly SqlServerContext _msSqlServerContext;
 
-        public GameRentalsRepository(BoardGameRentalMsSqlContext msSqlContext)
+        public GameRentalsRepository(SqlServerContext msSqlServerContext)
         {
-            _msSqlContext = msSqlContext;
+            _msSqlServerContext = msSqlServerContext;
         }
 
         public void Add(GameRental entity)
         {
-            _msSqlContext.GameRentals.Add(entity);
+            _msSqlServerContext.GameRentals.Add(entity);
         }
 
         public async Task AddAsync(GameRental entity)
         {
-            await _msSqlContext.GameRentals.AddAsync(entity);
+            await _msSqlServerContext.GameRentals.AddAsync(entity);
         }
 
         public void Remove(GameRental entity)
         {
-            _msSqlContext.GameRentals.Remove(entity);
+            _msSqlServerContext.GameRentals.Remove(entity);
         }
 
         public GameRental Get(int? id)
         {
-            return _msSqlContext.GameRentals.FirstOrDefault(x => x.Id == id);
+            return _msSqlServerContext.GameRentals.FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<GameRental> GetAll()
         {
-            return _msSqlContext.GameRentals.Include(x => x.BoardGame).Include(x => x.Client).ToList();
+            return _msSqlServerContext.GameRentals.Include(x => x.BoardGame).Include(x => x.Client).ToList();
         }
 
         public void Update(GameRental entity)
         {
-            _msSqlContext.GameRentals.Update(entity);
+            _msSqlServerContext.GameRentals.Update(entity);
         }
     }
 }

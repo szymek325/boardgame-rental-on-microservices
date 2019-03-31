@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BoardGameRentalApp.DataAccess.SqLite.Context
 {
-    internal class BoardGameRentalSqLiteContext : DbContext
+    internal class SqLiteContext : DbContext
     {
-        public BoardGameRentalSqLiteContext(DbContextOptions options) : base(options)
+        public SqLiteContext(DbContextOptions options) : base(options)
         {
         }
 

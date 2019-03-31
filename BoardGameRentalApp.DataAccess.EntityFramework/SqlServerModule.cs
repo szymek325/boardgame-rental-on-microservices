@@ -16,9 +16,9 @@ namespace BoardGameRentalApp.DataAccess.SqlServer
         public static IServiceCollection AddSqlServerModule(this IServiceCollection services,
             ConnectionStrings connectionStrings)
         {
-            services.AddDbContext<BoardGameRentalMsSqlContext>(options => options.UseSqlServer(connectionStrings.SqlServer,
+            services.AddDbContext<SqlServerContext>(options => options.UseSqlServer(connectionStrings.SqlServer,
                 migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(BoardGameRentalMsSqlContext).GetTypeInfo().Assembly.GetName()
+                    migrationsOptions.MigrationsAssembly(typeof(SqlServerContext).GetTypeInfo().Assembly.GetName()
                         .Name)));
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();

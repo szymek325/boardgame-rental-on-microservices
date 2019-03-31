@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BoardGameRentalApp.DataAccess.SqlServer.Migrations
 {
-    [DbContext(typeof(BoardGameRentalMsSqlContext))]
+    [DbContext(typeof(SqlServerContext))]
     partial class BoardGameRentalContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
