@@ -9,5 +9,8 @@ namespace BoardGameRentalApp.Core.Dto.GameRentals
 
         [Required]
         public int BoardGameId { get; set; }
+
+        [Required]
+        public float ChargedDeposit { get; set; }
     }
 }

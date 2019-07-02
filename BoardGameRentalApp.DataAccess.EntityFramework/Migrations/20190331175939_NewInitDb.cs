@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
 {
-    public partial class InitDb : Migration
+    public partial class NewInitDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,10 +17,10 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreationTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 3, 31, 10, 4, 57, 358, DateTimeKind.Utc).AddTicks(3980)),
+                    CreationTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 3, 31, 17, 59, 39, 112, DateTimeKind.Utc).AddTicks(7976)),
                     Name = table.Column<string>(nullable: true),
                     PricePerDay = table.Column<float>(nullable: false),
-                    Bail = table.Column<float>(nullable: false)
+                    SuggestedDeposit = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,7 +34,7 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreationTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 3, 31, 10, 4, 57, 361, DateTimeKind.Utc).AddTicks(7882)),
+                    CreationTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 3, 31, 17, 59, 39, 116, DateTimeKind.Utc).AddTicks(2455)),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     ContactNumber = table.Column<string>(nullable: true)
@@ -51,9 +51,10 @@ namespace BoardGameRentalApp.DataAccess.EntityFramework.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreationTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 3, 31, 10, 4, 57, 361, DateTimeKind.Utc).AddTicks(8052)),
+                    CreationTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 3, 31, 17, 59, 39, 116, DateTimeKind.Utc).AddTicks(2630)),
                     ClientId = table.Column<int>(nullable: false),
                     BoardGameId = table.Column<int>(nullable: false),
+                    ChargedDeposit = table.Column<float>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     PaymentAmount = table.Column<float>(nullable: false)
                 },

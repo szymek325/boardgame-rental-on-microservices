@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using BoardGameRentalApp.Core.Dto;
 using BoardGameRentalApp.Core.Dto.Clients;
 using BoardGameRentalApp.Core.Entities;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
@@ -13,7 +14,7 @@ namespace BoardGameRentalApp.Core.Services
         ClientDto Get(int id);
         Task<ClientDto> CreateAsync(CreateClientInput input);
         Task<ClientDto> UpdateAsync(ClientDto input);
-        Task<ClientDto> RemoveAsync(ClientDto input);
+        Task<Result> RemoveAsync(int id);
     }
 
     internal class ClientsService : IClientsService
@@ -41,15 +42,6 @@ namespace BoardGameRentalApp.Core.Services
             return output;
         }
 
-        public async Task<ClientDto> RemoveAsync(ClientDto input)
-        {
-            var mappedEntity = _mapper.Map<Client>(input);
-            _unitOfWork.ClientsRepository.Remove(mappedEntity);
-            await _unitOfWork.SaveChangesAsync();
-            var result = _mapper.Map<ClientDto>(mappedEntity);
-            return result;
-        }
-
         public async Task<ClientDto> CreateAsync(CreateClientInput input)
         {
             var mappedEntity = _mapper.Map<Client>(input);
@@ -66,6 +58,14 @@ namespace BoardGameRentalApp.Core.Services
             await _unitOfWork.SaveChangesAsync();
             var result = _mapper.Map<ClientDto>(mappedEntity);
             return result;
+        }
+
+        public async Task<Result> RemoveAsync(int id)
+        {
+            var entity = _unitOfWork.ClientsRepository.Get(id);
+            _unitOfWork.ClientsRepository.Remove(entity);
+            await _unitOfWork.SaveChangesAsync();
+            return new Result(true, $"Client with id {id} was removed");
         }
     }
 }

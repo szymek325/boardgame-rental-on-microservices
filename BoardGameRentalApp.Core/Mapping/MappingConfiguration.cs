@@ -13,7 +13,7 @@ namespace BoardGameRentalApp.Core.Mapping
             CreateMap<CreateBoardGameInput, BoardGame>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.PricePerDay, opt => opt.MapFrom(src => src.PricePerDay))
-                .ForMember(dest => dest.Bail, opt => opt.MapFrom(src => src.Bail))
+                .ForMember(dest => dest.SuggestedDeposit, opt => opt.MapFrom(src => src.SuggestedDeposit))
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.CreationTime, opt => opt.Ignore())
                 .ForMember(dest => dest.GameRentals, opt => opt.Ignore());
@@ -22,9 +22,8 @@ namespace BoardGameRentalApp.Core.Mapping
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.PricePerDay, opt => opt.MapFrom(src => src.PricePerDay))
-                .ForMember(dest => dest.Bail, opt => opt.MapFrom(src => src.Bail))
+                .ForMember(dest => dest.SuggestedDeposit, opt => opt.MapFrom(src => src.SuggestedDeposit))
                 .ForMember(dest => dest.CreationTime, opt => opt.MapFrom(src => src.CreationTime))
-                .ForMember(dest => dest.GameRentals, opt => opt.MapFrom(src => src.GameRentals))
                 .ReverseMap();
 
             CreateMap<CreateClientInput, Client>()
@@ -41,12 +40,12 @@ namespace BoardGameRentalApp.Core.Mapping
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
                 .ForMember(dest => dest.ContactNumber, opt => opt.MapFrom(src => src.ContactNumber))
                 .ForMember(dest => dest.CreationTime, opt => opt.MapFrom(src => src.CreationTime))
-                .ForMember(dest => dest.GameRentals, opt => opt.MapFrom(src => src.GameRentals))
                 .ReverseMap();
 
             CreateMap<CreateGameRentalInput, GameRental>()
                 .ForMember(dest => dest.BoardGameId, opt => opt.MapFrom(src => src.BoardGameId))
                 .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId))
+                .ForMember(dest => dest.ChargedDeposit, opt => opt.MapFrom(src => src.ChargedDeposit))
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.CreationTime, opt => opt.Ignore())
                 .ForMember(dest => dest.Client, opt => opt.Ignore())
@@ -60,6 +59,8 @@ namespace BoardGameRentalApp.Core.Mapping
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
                 .ForMember(dest => dest.Client, opt => opt.MapFrom(src => src.Client))
                 .ForMember(dest => dest.BoardGame, opt => opt.MapFrom(src => src.BoardGame))
+                .ForMember(dest => dest.CreationTime, opt => opt.MapFrom(src => src.CreationTime))
+                .ForMember(dest => dest.ChargedDeposit, opt => opt.MapFrom(src => src.ChargedDeposit))
                 .ReverseMap();
         }
     }

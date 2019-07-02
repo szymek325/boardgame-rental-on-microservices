@@ -6,7 +6,7 @@ namespace BoardGameRentalApp.Core.Entities
     {
         public string Name { get; set; }
         public float PricePerDay { get; set; }
-        public float Bail { get; set; }
+        public float SuggestedDeposit { get; set; }
         public ICollection<GameRental> GameRentals { get; set; }
     }
 }

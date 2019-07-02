@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BoardGameRentalApp.Core.Dto;
 using BoardGameRentalApp.Core.Dto.Clients;
 using BoardGameRentalApp.Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -35,18 +36,17 @@ namespace BoardGameRentalApp.WebApi.Controllers
             return await _service.CreateAsync(clientInput);
         }
 
-        [HttpPut("[action]")]
-        public async Task<ClientDto> UpdateClientAsync([FromBody]
-            ClientDto clientInput)
+        [HttpDelete("[action]/{id}")]
+        public async Task<Result> RemoveClientAsync(int id)
         {
-            return await _service.UpdateAsync(clientInput);
+            return await _service.RemoveAsync(id);
         }
 
-        [HttpDelete("[action]")]
-        public async Task<ClientDto> RemoveClientAsync([FromBody]
-            ClientDto clientInput)
-        {
-            return await _service.RemoveAsync(clientInput);
-        }
+        //[HttpPut("[action]")]
+        //public async Task<ClientDto> UpdateClientAsync([FromBody]
+        //    ClientDto clientInput)
+        //{
+        //    return await _service.UpdateAsync(clientInput);
+        //}
     }
 }
