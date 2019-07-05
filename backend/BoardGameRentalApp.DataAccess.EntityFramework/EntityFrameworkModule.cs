@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
-using BoardGameRentalApp.Core.Configuration;
+using BoardGameRentalApp.Common.Configuration;
 using BoardGameRentalApp.Core.Interfaces.DataAccess;
 using BoardGameRentalApp.DataAccess.EntityFramework.Context;
 using BoardGameRentalApp.DataAccess.EntityFramework.Repositories;
