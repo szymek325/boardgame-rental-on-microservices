@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace BoardGameRentalApp.Core.Common
+namespace BoardGameRentalApp.Common.Common
 {
     public interface ILoggerAdapter<T>
     {

@@ -1,4 +1,4 @@
-﻿namespace BoardGameRentalApp.Core.Configuration
+﻿namespace BoardGameRentalApp.Common.Configuration
 {
     public class ConnectionStrings
     {

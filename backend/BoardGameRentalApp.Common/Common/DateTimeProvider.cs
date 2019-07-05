@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BoardGameRentalApp.Core.Common
+namespace BoardGameRentalApp.Common.Common
 {
     public interface IDateTimeProvider
     {
