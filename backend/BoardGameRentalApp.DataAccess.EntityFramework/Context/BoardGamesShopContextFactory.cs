@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reflection;
-using BoardGameRentalApp.Core.Configuration;
+using BoardGameRentalApp.Common.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;

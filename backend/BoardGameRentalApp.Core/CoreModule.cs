@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
-using BoardGameRentalApp.Core.Common;
+using BoardGameRentalApp.Common;
 using BoardGameRentalApp.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,11 +11,10 @@ namespace BoardGameRentalApp.Core
     {
         public static IServiceCollection AddCoreModule(this IServiceCollection services)
         {
-            services.AddTransient<IDateTimeProvider, DateTimeProvider>();
-            services.AddSingleton(typeof(ILoggerAdapter<>), typeof(LoggerAdapter<>));
             services.AddTransient<IBoardGamesService, BoardGamesService>();
             services.AddTransient<IClientsService, ClientsService>();
             services.AddTransient<IGameRentalsService, GameRentalsService>();
+            services.AddCommonModule();
             return services;
         }
     }
