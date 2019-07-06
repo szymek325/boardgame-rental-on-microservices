@@ -1,24 +1,30 @@
 ﻿using System.Collections.Generic;
+using Clients.Api.DataAccess.Context;
+using Clients.Api.DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Clients.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ClientsController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly ClientsContext _clientsContext;
+
+        public ClientsController(ClientsContext clientsContext)
         {
-            return new[] {"value1", "value2"};
+            _clientsContext = clientsContext;
         }
 
-        // GET api/values/5
+        [HttpGet]
+        public ActionResult<IEnumerable<Client>> GetAll()
+        {
+            return new List<Client>();
+        }
+
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-
             return "value";
         }
 
