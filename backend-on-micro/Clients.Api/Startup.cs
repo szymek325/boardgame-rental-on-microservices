@@ -33,14 +33,27 @@ namespace Clients.Api
             });
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "My API", Version = "v1"}); });
 
+            RegisterDbContext(services);
+        }
+
+        private void RegisterDbContext(IServiceCollection services)
+        {
             var connectionStrings = new ConnectionStrings();
             Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
-            services.AddDbContext<ClientsContext>(options => options.UseSqlServer(
-                connectionStrings.SqlServer,
-                migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(ClientsContext).GetTypeInfo().Assembly
-                        .GetName()
-                        .Name)));
+
+            if (connectionStrings.UseSqLite)
+                services.AddDbContext<ClientsContext>(options => options.UseSqlite(connectionStrings.SqLite,
+                    migrationsOptions =>
+                        migrationsOptions.MigrationsAssembly(typeof(ClientsContext).GetTypeInfo().Assembly
+                            .GetName()
+                            .Name)));
+            else
+                services.AddDbContext<ClientsContext>(options => options.UseSqlServer(
+                    connectionStrings.SqlServer,
+                    migrationsOptions =>
+                        migrationsOptions.MigrationsAssembly(typeof(ClientsContext).GetTypeInfo().Assembly
+                            .GetName()
+                            .Name)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

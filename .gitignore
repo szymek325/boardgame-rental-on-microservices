@@ -7,3 +7,4 @@
 /.vs/slnx.sqlite
 /.vs/BoardGameRentalApp/v16
 /.vs
+/backend-on-micro/Clients.Api/BoardGames.db
