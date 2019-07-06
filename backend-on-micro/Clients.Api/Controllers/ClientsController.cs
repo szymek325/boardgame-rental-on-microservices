@@ -14,26 +14,26 @@ namespace Clients.Api.Controllers
     [ApiController]
     public class ClientsController : ControllerBase
     {
-        private readonly ClientsContext _clientsContext;
+        private readonly ClientsDbContext _clientsDbContext;
         private readonly IMapper _mapper;
 
-        public ClientsController(ClientsContext clientsContext, IMapper mapper)
+        public ClientsController(ClientsDbContext clientsDbContext, IMapper mapper)
         {
-            _clientsContext = clientsContext ?? throw new ArgumentNullException(nameof(clientsContext));
+            _clientsDbContext = clientsDbContext ?? throw new ArgumentNullException(nameof(clientsDbContext));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _clientsContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            _clientsDbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<Client>>> GetAll()
         {
-            return await _clientsContext.Clients.ToListAsync();
+            return await _clientsDbContext.Clients.ToListAsync();
         }
 
         [HttpGet("[action]")]
         public async Task<ActionResult<Client>> GetById(int id)
         {
-            return await _clientsContext.Clients.SingleOrDefaultAsync(x => x.Id.Equals(id));
+            return await _clientsDbContext.Clients.SingleOrDefaultAsync(x => x.Id.Equals(id));
         }
 
         [HttpPost("[action]")]
@@ -41,8 +41,8 @@ namespace Clients.Api.Controllers
             CreateClientInput input)
         {
             var entity = _mapper.Map<Client>(input);
-            await _clientsContext.Clients.AddAsync(entity);
-            await _clientsContext.SaveChangesAsync();
+            await _clientsDbContext.Clients.AddAsync(entity);
+            await _clientsDbContext.SaveChangesAsync();
         }
     }
 }

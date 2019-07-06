@@ -1,4 +1,4 @@
-﻿namespace Clients.Api.Configuration
+﻿namespace Service.Common.Configuration.AppSettings
 {
     public class ConnectionStrings
     {

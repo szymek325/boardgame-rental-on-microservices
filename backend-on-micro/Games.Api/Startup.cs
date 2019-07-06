@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
-using Clients.Api.DataAccess.Context;
-using MediatR;
+using Games.Api.DataAccess.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +11,7 @@ using Newtonsoft.Json;
 using Service.Common.Configuration.AppSettings;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Clients.Api
+namespace Games.Api
 {
     public class Startup
     {
@@ -23,10 +22,8 @@ namespace Clients.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
             {
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
@@ -44,16 +41,16 @@ namespace Clients.Api
             Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
 
             if (connectionStrings.UseSqLite)
-                services.AddDbContext<ClientsDbContext>(options => options.UseSqlite(connectionStrings.SqLite,
+                services.AddDbContext<GamesDbContext>(options => options.UseSqlite(connectionStrings.SqLite,
                     migrationsOptions =>
-                        migrationsOptions.MigrationsAssembly(typeof(ClientsDbContext).GetTypeInfo().Assembly
+                        migrationsOptions.MigrationsAssembly(typeof(GamesDbContext).GetTypeInfo().Assembly
                             .GetName()
                             .Name)));
             else
-                services.AddDbContext<ClientsDbContext>(options => options.UseSqlServer(
+                services.AddDbContext<GamesDbContext>(options => options.UseSqlServer(
                     connectionStrings.SqlServer,
                     migrationsOptions =>
-                        migrationsOptions.MigrationsAssembly(typeof(ClientsDbContext).GetTypeInfo().Assembly
+                        migrationsOptions.MigrationsAssembly(typeof(GamesDbContext).GetTypeInfo().Assembly
                             .GetName()
                             .Name)));
         }
