@@ -18,6 +18,7 @@ namespace Clients.Api.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
+
             return "value";
         }
 

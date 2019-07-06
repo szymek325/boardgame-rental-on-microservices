@@ -1,8 +1,11 @@
 ﻿using System.Reflection;
+using Clients.Api.Configuration;
+using Clients.Api.DataAccess.Context;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -29,6 +32,15 @@ namespace Clients.Api
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "My API", Version = "v1"}); });
+
+            var connectionStrings = new ConnectionStrings();
+            Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
+            services.AddDbContext<ClientsContext>(options => options.UseSqlServer(
+                connectionStrings.SqlServer,
+                migrationsOptions =>
+                    migrationsOptions.MigrationsAssembly(typeof(ClientsContext).GetTypeInfo().Assembly
+                        .GetName()
+                        .Name)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
