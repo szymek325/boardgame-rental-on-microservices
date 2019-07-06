@@ -6,7 +6,6 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
 COPY ["Games.Api/Games.Api.csproj", "Games.Api/"]
-COPY ["Service.Common/Service.Common.csproj", "Service.Common/"]
 RUN dotnet restore "Games.Api/Games.Api.csproj"
 COPY . .
 WORKDIR "/src/Games.Api"
