@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 using Clients.Api.DataAccess.Context;
 using Clients.Api.DataAccess.Entities;
+using Clients.Api.Dto;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Clients.Api.Controllers
 {
@@ -10,42 +15,34 @@ namespace Clients.Api.Controllers
     public class ClientsController : ControllerBase
     {
         private readonly ClientsContext _clientsContext;
+        private readonly IMapper _mapper;
 
-        public ClientsController(ClientsContext clientsContext)
+        public ClientsController(ClientsContext clientsContext, IMapper mapper)
         {
-            _clientsContext = clientsContext;
+            _clientsContext = clientsContext ?? throw new ArgumentNullException(nameof(clientsContext));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _clientsContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Client>> GetAll()
+        [HttpGet("[action]")]
+        public async Task<ActionResult<IEnumerable<Client>>> GetAll()
         {
-            return new List<Client>();
+            return await _clientsContext.Clients.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("[action]")]
+        public async Task<ActionResult<Client>> GetById(int id)
         {
-            return "value";
+            return await _clientsContext.Clients.SingleOrDefaultAsync(x => x.Id.Equals(id));
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]
-            string value)
+        [HttpPost("[action]")]
+        public async Task Create([FromBody]
+            CreateClientInput input)
         {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]
-            string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var entity = _mapper.Map<Client>(input);
+            await _clientsContext.Clients.AddAsync(entity);
+            await _clientsContext.SaveChangesAsync();
         }
     }
 }
