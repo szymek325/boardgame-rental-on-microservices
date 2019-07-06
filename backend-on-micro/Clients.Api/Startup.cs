@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using AutoMapper;
 using Clients.Api.Configuration;
 using Clients.Api.DataAccess.Context;
 using MediatR;
@@ -34,6 +35,7 @@ namespace Clients.Api
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "My API", Version = "v1"}); });
 
             RegisterDbContext(services);
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
         }
 
         private void RegisterDbContext(IServiceCollection services)
