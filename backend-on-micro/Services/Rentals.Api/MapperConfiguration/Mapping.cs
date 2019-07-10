@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore.Internal;
 using Rentals.Api.DataAccess.Entities;
@@ -13,7 +14,8 @@ namespace Rentals.Api.MapperConfiguration
             CreateMap<CreateRentalInput, Rental>()
                 .ForMember(dest => dest.ClientId, opts => opts.MapFrom(src => src.ClientId))
                 .ForMember(dest => dest.RentedGames,
-                    opts => opts.MapFrom(src => src.Products.ToList().Select(x => x.Id.ToString()).Join(";")));
+                    opts => opts.MapFrom(src => src.Products.ToList().Select(x => x.Id.ToString()).Join(";")))
+                .ForMember(dest => dest.CreationTimeUtc, opts => opts.MapFrom(src => DateTime.UtcNow));
         }
     }
 }
