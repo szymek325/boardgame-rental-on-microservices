@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
+using Clients.Api.Configuration;
 using Clients.Api.DataAccess.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using Service.Common.Configuration.AppSettings;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Clients.Api
@@ -41,19 +41,12 @@ namespace Clients.Api
             var connectionStrings = new ConnectionStrings();
             Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
 
-            if (connectionStrings.UseSqLite)
-                services.AddDbContext<ClientsDbContext>(options => options.UseSqlite(connectionStrings.SqLite,
-                    migrationsOptions =>
-                        migrationsOptions.MigrationsAssembly(typeof(ClientsDbContext).GetTypeInfo().Assembly
-                            .GetName()
-                            .Name)));
-            else
-                services.AddDbContext<ClientsDbContext>(options => options.UseSqlServer(
-                    connectionStrings.SqlServer,
-                    migrationsOptions =>
-                        migrationsOptions.MigrationsAssembly(typeof(ClientsDbContext).GetTypeInfo().Assembly
-                            .GetName()
-                            .Name)));
+            services.AddDbContext<ClientsDbContext>(options => options.UseSqlServer(
+                connectionStrings.SqlServer,
+                migrationsOptions =>
+                    migrationsOptions.MigrationsAssembly(typeof(ClientsDbContext).GetTypeInfo().Assembly
+                        .GetName()
+                        .Name)));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
