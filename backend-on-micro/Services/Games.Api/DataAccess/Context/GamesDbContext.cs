@@ -8,7 +8,7 @@ namespace Games.Api.DataAccess.Context
     {
         public GamesDbContext(DbContextOptions options) : base(options)
         {
-            base.Database.EnsureCreated();
+            base.Database.Migrate();
         }
 
         public DbSet<Game> Games { get; set; }

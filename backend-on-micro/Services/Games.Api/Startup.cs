@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
+using Games.Api.Configuration;
 using Games.Api.DataAccess.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using Service.Common.Configuration.AppSettings;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Games.Api
@@ -40,19 +40,12 @@ namespace Games.Api
             var connectionStrings = new ConnectionStrings();
             Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
 
-            if (connectionStrings.UseSqLite)
-                services.AddDbContext<GamesDbContext>(options => options.UseSqlite(connectionStrings.SqLite,
-                    migrationsOptions =>
-                        migrationsOptions.MigrationsAssembly(typeof(GamesDbContext).GetTypeInfo().Assembly
-                            .GetName()
-                            .Name)));
-            else
-                services.AddDbContext<GamesDbContext>(options => options.UseSqlServer(
-                    connectionStrings.SqlServer,
-                    migrationsOptions =>
-                        migrationsOptions.MigrationsAssembly(typeof(GamesDbContext).GetTypeInfo().Assembly
-                            .GetName()
-                            .Name)));
+            services.AddDbContext<GamesDbContext>(options => options.UseSqlServer(
+                connectionStrings.SqlServer,
+                migrationsOptions =>
+                    migrationsOptions.MigrationsAssembly(typeof(GamesDbContext).GetTypeInfo().Assembly
+                        .GetName()
+                        .Name)));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
