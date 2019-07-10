@@ -55,7 +55,6 @@ namespace Games.Api
                             .Name)));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -70,7 +69,9 @@ namespace Games.Api
                 c.SwaggerEndpoint("./swagger/v1/swagger.json", "My API V1");
             });
 
+            //doesn't work for now with multi docker communication
             //app.UseHttpsRedirection();
+
             app.UseMvc();
         }
     }

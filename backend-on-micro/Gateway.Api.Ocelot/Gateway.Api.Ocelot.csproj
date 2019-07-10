@@ -12,11 +12,12 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.9" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.4" />
     <PackageReference Include="Ocelot" Version="13.5.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="configuration.json">
+    <Content Update="ocelot.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
