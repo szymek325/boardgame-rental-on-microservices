@@ -1,32 +1,16 @@
 ﻿{
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/api/Clients/GetAll",
+      "DownstreamPathTemplate": "/{all}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44350
+          "Host": "clients.api",
+          "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/Clients/GetAll",
-      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
-      //},
-      //{
-      //  "DownstreamPathTemplate": "/api/{version}/{everything}",
-      //  "DownstreamScheme": "http",
-      //  "DownstreamHostAndPorts": [
-      //    {
-      //      "Host": "games.api",
-      //      "Port": 80
-      //    }
-      //  ],
-      //  "UpstreamPathTemplate": "/api/{version}/b/{everything}",
-      //  "UpstreamHttpMethod": [ "POST", "PUT", "GET" ],
-      //  "AuthenticationOptions": {
-      //    "AuthenticationProviderKey": "IdentityApiKey",
-      //    "AllowedScopes": []
-      //  }
+      "UpstreamPathTemplate": "/{all}",
+      "UpstreamHttpMethod": [ "GET" ]
     }
 
   ],
