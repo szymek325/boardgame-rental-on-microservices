@@ -23,9 +23,27 @@ services:
     depends_on:
             - sqlserver.linux
 
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+
+  rentals.api:
+    image: ${DOCKER_REGISTRY-}rentalsapi
+    build:
+      context: .
+      dockerfile: Services/Rentals.Api/Dockerfile
+    depends_on:
+            - mongo
+
   gateway.api.ocelot:
     image: ${DOCKER_REGISTRY-}gatewayapiocelot
     build:
       context: .
       dockerfile: Gateway/Gateway.Api.Ocelot/Dockerfile
+
 

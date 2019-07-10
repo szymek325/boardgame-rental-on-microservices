@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clients.Api", "Services\Cli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Api", "Services\Games.Api\Games.Api.csproj", "{8725CE84-D3A5-4DC6-ABD3-7BCCA3E6F89B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rentals.Api", "Services\Rentals.Api\Rentals.Api.csproj", "{DB0D1DDB-299E-46AD-8D2A-9324679ECB03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{8725CE84-D3A5-4DC6-ABD3-7BCCA3E6F89B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8725CE84-D3A5-4DC6-ABD3-7BCCA3E6F89B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8725CE84-D3A5-4DC6-ABD3-7BCCA3E6F89B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB0D1DDB-299E-46AD-8D2A-9324679ECB03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB0D1DDB-299E-46AD-8D2A-9324679ECB03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB0D1DDB-299E-46AD-8D2A-9324679ECB03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB0D1DDB-299E-46AD-8D2A-9324679ECB03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{9E4A3F87-6A9D-4E3B-A270-CE9E81E5B510} = {F386C376-B144-468B-BBAB-A651CDA14341}
 		{DDE1F9D5-52AB-4EE4-AC67-09EE78BA10CD} = {04542065-3A8C-402F-BA44-1AD973E76F43}
 		{8725CE84-D3A5-4DC6-ABD3-7BCCA3E6F89B} = {04542065-3A8C-402F-BA44-1AD973E76F43}
+		{DB0D1DDB-299E-46AD-8D2A-9324679ECB03} = {04542065-3A8C-402F-BA44-1AD973E76F43}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {665BD488-2BA0-4DDA-AB5A-BA4C12574A89}
