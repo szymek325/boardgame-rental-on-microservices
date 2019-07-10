@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29025.244
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clients.Api", "Clients.Api\Clients.Api.csproj", "{BC1804CB-146C-4BB2-BE0F-AA2E4E3E3491}"
 EndProject
@@ -11,7 +11,13 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Api", "Games.Api\Games.Api.csproj", "{30AF83BE-DC82-4642-8FE6-BCE1B0995FA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.Api.Ocelot", "Gateway.Api.Ocelot\Gateway.Api.Ocelot.csproj", "{683F8842-D4B7-48F4-85A4-48490ADC7FC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Api.Ocelot", "Gateway.Api.Ocelot\Gateway.Api.Ocelot.csproj", "{683F8842-D4B7-48F4-85A4-48490ADC7FC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{04542065-3A8C-402F-BA44-1AD973E76F43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{A105EE23-D18A-4659-966C-2842008D2583}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{F386C376-B144-468B-BBAB-A651CDA14341}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +48,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC1804CB-146C-4BB2-BE0F-AA2E4E3E3491} = {04542065-3A8C-402F-BA44-1AD973E76F43}
+		{FD3A4414-5596-4F0B-90DA-1A5183F06F31} = {F386C376-B144-468B-BBAB-A651CDA14341}
+		{30AF83BE-DC82-4642-8FE6-BCE1B0995FA8} = {04542065-3A8C-402F-BA44-1AD973E76F43}
+		{683F8842-D4B7-48F4-85A4-48490ADC7FC1} = {A105EE23-D18A-4659-966C-2842008D2583}
+		{F386C376-B144-468B-BBAB-A651CDA14341} = {04542065-3A8C-402F-BA44-1AD973E76F43}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {665BD488-2BA0-4DDA-AB5A-BA4C12574A89}
