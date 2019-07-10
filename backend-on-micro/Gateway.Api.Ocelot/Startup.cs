@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace Gateway.Api.Ocelot
 {
@@ -34,6 +35,7 @@ namespace Gateway.Api.Ocelot
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseOcelot();
         }
     }
 }
