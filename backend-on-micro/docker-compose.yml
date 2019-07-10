@@ -11,7 +11,7 @@ services:
     image: ${DOCKER_REGISTRY-}clientsapi
     build:
       context: .
-      dockerfile: Clients.Api/Dockerfile
+      dockerfile: Services/Clients.Api/Dockerfile
     depends_on:
             - clients.db
 
@@ -19,12 +19,12 @@ services:
     image: ${DOCKER_REGISTRY-}gamesapi
     build:
       context: .
-      dockerfile: Games.Api/Dockerfile
+      dockerfile: Services/Games.Api/Dockerfile
 
 
   gateway.api.ocelot:
     image: ${DOCKER_REGISTRY-}gatewayapiocelot
     build:
       context: .
-      dockerfile: Gateway.Api.Ocelot/Dockerfile
+      dockerfile: Gateway/Gateway.Api.Ocelot/Dockerfile
 
