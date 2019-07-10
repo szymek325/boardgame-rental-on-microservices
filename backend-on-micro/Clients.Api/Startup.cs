@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
 using Clients.Api.DataAccess.Context;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +25,6 @@ namespace Clients.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
             {
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
@@ -58,7 +56,6 @@ namespace Clients.Api
                             .Name)));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -73,7 +70,9 @@ namespace Clients.Api
                 c.SwaggerEndpoint("./swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseHttpsRedirection();
+            //doesn't work for now with multi docker communication
+            //app.UseHttpsRedirection();
+
             app.UseMvc();
         }
     }

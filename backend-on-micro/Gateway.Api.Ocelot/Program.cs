@@ -7,7 +7,7 @@ using NLog;
 using NLog.Extensions.Logging;
 using NLog.Web;
 
-namespace Clients.Api
+namespace Gateway.Api.Ocelot
 {
     public class Program
     {
@@ -51,6 +51,7 @@ namespace Clients.Api
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false, true)
                 .AddJsonFile($"appsettings.{environment}.json", false, true)
+                .AddJsonFile("ocelot.json", false, true)
                 .Build();
         }
     }
