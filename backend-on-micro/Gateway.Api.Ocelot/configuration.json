@@ -1,7 +1,7 @@
 ﻿{
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/{all}",
+      "DownstreamPathTemplate": "/api/Clients/{all}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,10 +9,21 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/{all}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamPathTemplate": "/Clients/{all}",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT"]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Games/{all}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "games.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Games/{all}",
+      "UpstreamHttpMethod": ["GET", "POST", "PUT"]
     }
-
   ],
   "GlobalConfiguration": {}
 }
