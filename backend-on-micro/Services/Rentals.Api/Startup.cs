@@ -1,17 +1,17 @@
 ﻿using System.Reflection;
 using AutoMapper;
-using Clients.Api.Configuration;
-using Clients.Api.DataAccess.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Rentals.Api.Configuration;
+using Rentals.Api.DataAccess;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Clients.Api
+namespace Rentals.Api
 {
     public class Startup
     {
@@ -32,20 +32,17 @@ namespace Clients.Api
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "My API", Version = "v1"}); });
 
             RegisterDbContext(services);
+            services.AddTransient<IRentalsRepository, RentalsRepository>();
+
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
         }
 
         private void RegisterDbContext(IServiceCollection services)
         {
-            var connectionStrings = new ConnectionStrings();
-            Configuration.GetSection(nameof(ConnectionStrings)).Bind(connectionStrings);
-
-            services.AddDbContext<ClientsDbContext>(options => options.UseSqlServer(
-                connectionStrings.SqlServer,
-                migrationsOptions =>
-                    migrationsOptions.MigrationsAssembly(typeof(ClientsDbContext).GetTypeInfo().Assembly
-                        .GetName()
-                        .Name)));
+            services.Configure<DatabaseSettings>(
+                Configuration.GetSection(nameof(DatabaseSettings)));
+            services.AddSingleton<IDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
