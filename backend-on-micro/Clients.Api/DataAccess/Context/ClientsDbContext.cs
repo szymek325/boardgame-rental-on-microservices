@@ -8,7 +8,7 @@ namespace Clients.Api.DataAccess.Context
     {
         public ClientsDbContext(DbContextOptions options) : base(options)
         {
-            base.Database.EnsureCreated();
+            base.Database.Migrate();
         }
 
         public DbSet<Client> Clients { get; set; }
