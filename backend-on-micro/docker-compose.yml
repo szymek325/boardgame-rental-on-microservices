@@ -1,26 +1,6 @@
 version: '3.4'
 
 services:
-  mongo:
-      image: mongo
-      restart: always
-      environment:
-        MONGO_INITDB_ROOT_USERNAME: root
-        MONGO_INITDB_ROOT_PASSWORD: example
-      ports:
-        - 27017:27017
-
-  mongo-express:
-      image: mongo-express
-      restart: always
-      ports:
-        - 8081:8081
-      environment:
-        ME_CONFIG_MONGODB_ADMINUSERNAME: root
-        ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      depends_on:
-        - mongo
-
   sqlserver.linux:
     image: "microsoft/mssql-server-linux"
     environment:
@@ -43,14 +23,27 @@ services:
     depends_on:
             - sqlserver.linux
 
-  gateway.api.ocelot:
-    image: ${DOCKER_REGISTRY-}gatewayapiocelot
-    build:
-      context: .
-      dockerfile: Gateway/Gateway.Api.Ocelot/Dockerfile
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+
   rentals.api:
     image: ${DOCKER_REGISTRY-}rentalsapi
     build:
       context: .
       dockerfile: Services/Rentals.Api/Dockerfile
+    depends_on:
+            - mongo
+
+  gateway.api.ocelot:
+    image: ${DOCKER_REGISTRY-}gatewayapiocelot
+    build:
+      context: .
+      dockerfile: Gateway/Gateway.Api.Ocelot/Dockerfile
+
 
