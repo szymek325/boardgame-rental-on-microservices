@@ -13,7 +13,7 @@ namespace Rentals.Api.MapperConfiguration
             CreateMap<CreateRentalInput, Rental>()
                 .ForMember(dest => dest.ClientId, opts => opts.MapFrom(src => src.ClientId))
                 .ForMember(dest => dest.RentedGames,
-                    opts => opts.MapFrom(src => src.Products.ToList().Select(x => x.ToString()).Join(";")));
+                    opts => opts.MapFrom(src => src.Products.ToList().Select(x => x.Id.ToString()).Join(";")));
         }
     }
 }
