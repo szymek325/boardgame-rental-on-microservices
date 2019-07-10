@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Common", "Service.C
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E3743858-1254-4C3A-B800-07F8C1A7D6B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Games.Api", "Games.Api\Games.Api.csproj", "{30AF83BE-DC82-4642-8FE6-BCE1B0995FA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Api", "Games.Api\Games.Api.csproj", "{30AF83BE-DC82-4642-8FE6-BCE1B0995FA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.Api.Ocelot", "Gateway.Api.Ocelot\Gateway.Api.Ocelot.csproj", "{683F8842-D4B7-48F4-85A4-48490ADC7FC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{30AF83BE-DC82-4642-8FE6-BCE1B0995FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30AF83BE-DC82-4642-8FE6-BCE1B0995FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30AF83BE-DC82-4642-8FE6-BCE1B0995FA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{683F8842-D4B7-48F4-85A4-48490ADC7FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{683F8842-D4B7-48F4-85A4-48490ADC7FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{683F8842-D4B7-48F4-85A4-48490ADC7FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{683F8842-D4B7-48F4-85A4-48490ADC7FC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
