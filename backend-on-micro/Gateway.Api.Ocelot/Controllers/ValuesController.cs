@@ -7,10 +7,6 @@ namespace Gateway.Api.Ocelot.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        public ValuesController()
-        {
-            
-        }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()

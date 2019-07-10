@@ -1,8 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using NLog;
+using NLog.Extensions.Logging;
+using NLog.Web;
 
 namespace Gateway.Api.Ocelot
 {
@@ -10,19 +13,46 @@ namespace Gateway.Api.Ocelot
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var configuration = BuildConfiguration();
+            var nlogConfigSection = configuration.GetSection("NLog");
+            LogManager.Configuration = new NLogLoggingConfiguration(nlogConfigSection);
+            var logger = LogManager.GetCurrentClassLogger();
+
+            try
+            {
+                logger.Debug("Application started");
+                CreateWebHostBuilder(args)
+                    .UseConfiguration(configuration)
+                    .Build()
+                    .Run();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Stopped program because of exception when building WebHost");
+                throw;
+            }
+            finally
+            {
+                LogManager.Shutdown();
+            }
         }
 
-        public static IWebHost BuildWebHost(string[] args)
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            var builder = WebHost.CreateDefaultBuilder(args);
+            return WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .UseNLog();
+        }
 
-            builder.ConfigureServices(s => s.AddSingleton(builder))
-                .ConfigureAppConfiguration(
-                    ic => ic.AddJsonFile("configuration.json"))
-                .UseStartup<Startup>();
-            var host = builder.Build();
-            return host;
+        private static IConfigurationRoot BuildConfiguration()
+        {
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            return new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", false, true)
+                .AddJsonFile($"appsettings.{environment}.json", false, true)
+                .AddJsonFile("ocelot.json", false, true)
+                .Build();
         }
     }
 }
