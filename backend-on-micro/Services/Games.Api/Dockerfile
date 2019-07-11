@@ -1,15 +1,15 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
-COPY ["Games.Api/Games.Api.csproj", "Games.Api/"]
-COPY ["Service.Common/Service.Common.csproj", "Service.Common/"]
-RUN dotnet restore "Games.Api/Games.Api.csproj"
+COPY ["Services/Games.Api/Games.Api.csproj", "Services/Games.Api/"]
+COPY ["Services/Service.Common/Service.Common.csproj", "Services/Service.Common/"]
+RUN dotnet restore "Services/Games.Api/Games.Api.csproj"
 COPY . .
-WORKDIR "/src/Games.Api"
+WORKDIR "/src/Services/Games.Api"
 RUN dotnet build "Games.Api.csproj" -c Release -o /app
 
 FROM build AS publish

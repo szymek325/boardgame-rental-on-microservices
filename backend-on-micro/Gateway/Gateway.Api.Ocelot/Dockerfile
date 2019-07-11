@@ -1,14 +1,14 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /src
-COPY ["Gateway.Api.Ocelot/Gateway.Api.Ocelot.csproj", "Gateway.Api.Ocelot/"]
-RUN dotnet restore "Gateway.Api.Ocelot/Gateway.Api.Ocelot.csproj"
+COPY ["Gateway/Gateway.Api.Ocelot/Gateway.Api.Ocelot.csproj", "Gateway/Gateway.Api.Ocelot/"]
+RUN dotnet restore "Gateway/Gateway.Api.Ocelot/Gateway.Api.Ocelot.csproj"
 COPY . .
-WORKDIR "/src/Gateway.Api.Ocelot"
+WORKDIR "/src/Gateway/Gateway.Api.Ocelot"
 RUN dotnet build "Gateway.Api.Ocelot.csproj" -c Release -o /app
 
 FROM build AS publish
