@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Service.Common
+namespace Base.Configuration
 {
     public interface IDateTimeProvider
     {
