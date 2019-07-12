@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace Service.Common
+namespace Base.Configuration
 {
     public interface ILoggerAdapter<T>
     {

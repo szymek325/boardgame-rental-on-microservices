@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29102.190
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E3743858-1254-4C3A-B800-07F8C1A7D6B0}"
 EndProject
@@ -23,7 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rentals.Api", "Services\Ren
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{8A40C80E-924C-4951-8046-A06ECADDD8D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rental.Web", "Web\Rental.Web\Rental.Web.csproj", "{15FB018D-DE0E-4241-A90D-28CE6FA1DFC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rental.Web", "Web\Rental.Web\Rental.Web.csproj", "{15FB018D-DE0E-4241-A90D-28CE6FA1DFC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{2DD276BF-8C18-40EE-A86F-1F54EC2C93AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base.Configuration", "Base\Base.Configuration\Base.Configuration.csproj", "{B7A96249-8FA9-45BF-9AC5-40869EC3EDF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +63,10 @@ Global
 		{15FB018D-DE0E-4241-A90D-28CE6FA1DFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15FB018D-DE0E-4241-A90D-28CE6FA1DFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15FB018D-DE0E-4241-A90D-28CE6FA1DFC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7A96249-8FA9-45BF-9AC5-40869EC3EDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7A96249-8FA9-45BF-9AC5-40869EC3EDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7A96249-8FA9-45BF-9AC5-40869EC3EDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7A96249-8FA9-45BF-9AC5-40869EC3EDF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +79,7 @@ Global
 		{8725CE84-D3A5-4DC6-ABD3-7BCCA3E6F89B} = {04542065-3A8C-402F-BA44-1AD973E76F43}
 		{DB0D1DDB-299E-46AD-8D2A-9324679ECB03} = {04542065-3A8C-402F-BA44-1AD973E76F43}
 		{15FB018D-DE0E-4241-A90D-28CE6FA1DFC3} = {8A40C80E-924C-4951-8046-A06ECADDD8D7}
+		{B7A96249-8FA9-45BF-9AC5-40869EC3EDF3} = {2DD276BF-8C18-40EE-A86F-1F54EC2C93AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {665BD488-2BA0-4DDA-AB5A-BA4C12574A89}
