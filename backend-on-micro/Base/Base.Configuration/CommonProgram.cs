@@ -24,26 +24,5 @@ namespace Base.Configuration
             ILogger logger = LogManager.GetCurrentClassLogger();
             return logger;
         }
-
-        //public static void StartApp(string[] args, ILogger logger, IConfigurationRoot configuration)
-        //{
-        //    try
-        //    {
-        //        logger.Debug("Application started");
-        //        CreateWebHostBuilder(args)
-        //            .UseConfiguration(configuration)
-        //            .Build()
-        //            .Run();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        logger.Error(ex, "Stopped program because of exception when building WebHost");
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        LogManager.Shutdown();
-        //    }
-        //}
     }
 }
