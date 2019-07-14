@@ -1,6 +1,7 @@
 ﻿using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using Rentals.Api.Models;
 
 namespace Rentals.Api.DataAccess.Entities
 {
@@ -12,7 +13,8 @@ namespace Rentals.Api.DataAccess.Entities
 
         public int ClientId { get; set; }
         public string RentedGames { get; set; }
-        public int Status { get; set; }
+        public RentalStatus Status { get; set; }
         public DateTime CreationTimeUtc { get; set; }
+        public DateTime ReturnTimeUtc { get; set; }
     }
 }

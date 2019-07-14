@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Rentals.Api.DataAccess;
 using Rentals.Api.DataAccess.Entities;
 using Rentals.Api.Dto;
+using Rentals.Api.Models;
 
 namespace Rentals.Api.Controllers
 {
@@ -37,6 +39,15 @@ namespace Rentals.Api.Controllers
         {
             var entity = _mapper.Map<Rental>(input);
             _rentalsRepo.Create(entity);
+        }
+
+        [HttpPut("[action]")]
+        public async Task Return(string id)
+        {
+            var rental = _rentalsRepo.Get(id);
+            rental.Status = RentalStatus.ReturnedAndPaid;
+            rental.ReturnTimeUtc = DateTime.UtcNow;
+            _rentalsRepo.Update(rental.Id, rental);
         }
     }
 }
