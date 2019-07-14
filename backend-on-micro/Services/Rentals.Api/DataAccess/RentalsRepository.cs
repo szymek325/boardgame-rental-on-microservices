@@ -10,6 +10,7 @@ namespace Rentals.Api.DataAccess
         IList<Rental> GetAll();
         Rental Get(string id);
         Rental Create(Rental rental);
+        void Update(string id, Rental rentalIn);
     }
 
     public class RentalsRepository : IRentalsRepository
@@ -40,14 +41,14 @@ namespace Rentals.Api.DataAccess
             return _rentals.Find(rental => rental.Id == id).FirstOrDefault();
         }
 
-        public void Update(string id, Rental bookIn)
+        public void Update(string id, Rental rentalIn)
         {
-            _rentals.ReplaceOne(rental => rental.Id == id, bookIn);
+            _rentals.ReplaceOne(rental => rental.Id == id, rentalIn);
         }
 
-        public void Remove(Rental bookIn)
+        public void Remove(Rental rentalIn)
         {
-            _rentals.DeleteOne(rental => rental.Id == bookIn.Id);
+            _rentals.DeleteOne(rental => rental.Id == rentalIn.Id);
         }
 
         public void Remove(string id)
