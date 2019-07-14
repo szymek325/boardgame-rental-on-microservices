@@ -22,7 +22,19 @@
         }
       ],
       "UpstreamPathTemplate": "/Games/{all}",
-      "UpstreamHttpMethod": ["GET", "POST", "PUT"]
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Rentals/{all}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "rentals.api",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/Rentals/{all}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ]
     }
   ],
   "GlobalConfiguration": {}

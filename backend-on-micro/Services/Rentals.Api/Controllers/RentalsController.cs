@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Rentals.Api.DataAccess;
@@ -34,8 +33,7 @@ namespace Rentals.Api.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task Create([FromBody]
-            CreateRentalInput input)
+        public async Task Create([FromBody] CreateRentalInput input)
         {
             var entity = _mapper.Map<Rental>(input);
             _rentalsRepo.Create(entity);
