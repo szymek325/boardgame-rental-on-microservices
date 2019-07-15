@@ -37,7 +37,7 @@ namespace Clients.Api
 
             RegisterDbContext(services);
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddTransient<IHandler<SendMessage>, SendMessageHandler>();
+            services.AddTransient<IEventHandler<SendEvent>, SendMessageEventHandler>();
             services.AddRabbitMq(Configuration.GetSection("rabbitmq"));
         }
 
@@ -73,7 +73,7 @@ namespace Clients.Api
 
             app.UseMvc();
 
-            app.AddHandler<SendMessage>();
+            app.AddEventHandler<SendEvent>();
         }
     }
 }

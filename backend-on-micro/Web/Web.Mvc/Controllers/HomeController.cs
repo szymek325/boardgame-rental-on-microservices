@@ -25,7 +25,7 @@ namespace Web.Mvc.Controllers
 
         public async Task<IActionResult> Privacy()
         {
-            await _client.PublishAsync(new SendMessage("Test Message"));
+            await _client.PublishAsync(new SendEvent("Test Message"));
             return View();
         }
 

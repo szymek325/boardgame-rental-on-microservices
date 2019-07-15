@@ -2,9 +2,9 @@
 
 namespace Base.RabbitMq.Messages
 {
-    public class SendMessage : IMessage
+    public class SendEvent : IEvent
     {
-        public SendMessage(string message)
+        public SendEvent(string message)
         {
             Message = message;
         }

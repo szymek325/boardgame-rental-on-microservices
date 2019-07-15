@@ -6,9 +6,9 @@ using Base.RabbitMq.Messages;
 
 namespace Clients.Api.Handlers
 {
-    public class SendMessageHandler : IHandler<SendMessage>
+    public class SendMessageEventHandler : IEventHandler<SendEvent>
     {
-        public async Task HandleAsync(SendMessage @event, CancellationToken token)
+        public async Task HandleAsync(SendEvent @event, CancellationToken token)
         {
             Console.WriteLine($"Receive: {@event.Message}");
         }
