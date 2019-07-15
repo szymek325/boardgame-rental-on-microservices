@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.Core", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.DataAccess.EntityFramework", "BoardGameRentalApp.DataAccess.EntityFramework\BoardGameRentalApp.DataAccess.EntityFramework.csproj", "{EBB0AFE0-5652-490C-8FA3-1BB1057C81E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardGameRentalApp.Common", "BoardGameRentalApp.Common\BoardGameRentalApp.Common.csproj", "{E8A3E99A-37BB-43AE-AC2D-72269608DD7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoardGameRentalApp.Common", "BoardGameRentalApp.Common\BoardGameRentalApp.Common.csproj", "{E8A3E99A-37BB-43AE-AC2D-72269608DD7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E74244F1-F218-4C09-BCC2-A20939F9648C}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
