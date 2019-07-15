@@ -1,6 +1,17 @@
 version: '3.4'
 
 services:
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq"
+    volumes:
+      - ./rabbitmq-isolated.conf:/etc/rabbitmq/rabbitmq.config
+
   sqlserver.linux:
     image: "microsoft/mssql-server-linux"
     environment:
@@ -39,11 +50,9 @@ services:
       dockerfile: Services/Rentals.Api/Dockerfile
     depends_on:
             - mongo
-
-  gateway.api.ocelot:
-    image: ${DOCKER_REGISTRY-}gatewayapiocelot
+  web.mvc:
+    image: ${DOCKER_REGISTRY-}webmvc
     build:
       context: .
-      dockerfile: Gateway/Gateway.Api.Ocelot/Dockerfile
-
+      dockerfile: Web/Web.Mvc/Dockerfile
 
