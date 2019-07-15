@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using AutoMapper;
+using Base.RabbitMq;
+using Base.RabbitMq.Messages;
 using Clients.Api.Configuration;
 using Clients.Api.DataAccess.Context;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +35,8 @@ namespace Clients.Api
 
             RegisterDbContext(services);
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddTransient<IHandler<SendMessage>, SendMessageHandler>();
+            services.AddRabbitMq(Configuration.GetSection("rabbitmq"));
         }
 
         private void RegisterDbContext(IServiceCollection services)
@@ -66,6 +70,8 @@ namespace Clients.Api
             //app.UseHttpsRedirection();
 
             app.UseMvc();
+
+            app.AddHandler<SendMessage>();
         }
     }
 }

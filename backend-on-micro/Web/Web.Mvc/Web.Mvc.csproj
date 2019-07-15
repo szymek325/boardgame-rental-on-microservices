@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Base\Base.Configuration\Base.Configuration.csproj" />
+    <ProjectReference Include="..\..\Base\Base.RabbitMq\Base.RabbitMq.csproj" />
   </ItemGroup>
 
 </Project>

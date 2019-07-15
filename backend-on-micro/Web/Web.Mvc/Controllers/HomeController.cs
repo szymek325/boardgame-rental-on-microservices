@@ -3,20 +3,29 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Base.RabbitMq.Messages;
 using Microsoft.AspNetCore.Mvc;
+using RawRabbit;
 using Web.Mvc.Models;
 
 namespace Web.Mvc.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IBusClient _client;
+
+        public HomeController(IBusClient client)
+        {
+            _client = client;
+        }
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
+            await _client.PublishAsync(new SendMessage("Test Message"));
             return View();
         }
 

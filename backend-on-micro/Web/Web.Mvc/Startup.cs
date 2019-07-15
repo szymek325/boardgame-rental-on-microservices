@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Base.RabbitMq;
+using Base.RabbitMq.Messages;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +27,8 @@ namespace Web.Mvc
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddTransient<IHandler<SendMessage>, SendMessageHandler>();
+            services.AddRabbitMq(Configuration.GetSection("rabbitmq"));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
