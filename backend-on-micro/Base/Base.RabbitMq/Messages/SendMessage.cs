@@ -1,4 +1,6 @@
-﻿namespace Base.RabbitMq.Messages
+﻿using Base.RabbitMq.Markers;
+
+namespace Base.RabbitMq.Messages
 {
     public class SendMessage : IMessage
     {

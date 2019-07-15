@@ -15,4 +15,10 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="rabbit.settings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using Base.RabbitMq.Messages;
+using Base.RabbitMq.Markers;
 using Microsoft.AspNetCore.Builder;
 using RawRabbit;
 

@@ -14,7 +14,8 @@ namespace Base.Configuration
             return new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", false, true)
-                .AddJsonFile($"appsettings.{environment}.json", false, true);
+                .AddJsonFile($"appsettings.{environment}.json", false, true)
+                .AddJsonFile($"rabbit.settings.json", true, true);
         }
 
         public static ILogger GetLogger(IConfigurationRoot configuration)

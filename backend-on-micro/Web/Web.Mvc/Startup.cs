@@ -1,4 +1,5 @@
 ﻿using Base.RabbitMq;
+using Base.RabbitMq.Markers;
 using Base.RabbitMq.Messages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,7 +28,6 @@ namespace Web.Mvc
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddTransient<IHandler<SendMessage>, SendMessageHandler>();
             services.AddRabbitMq(Configuration.GetSection("rabbitmq"));
         }
 

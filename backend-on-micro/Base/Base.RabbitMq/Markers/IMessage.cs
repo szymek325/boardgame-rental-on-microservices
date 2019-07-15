@@ -1,4 +1,4 @@
-﻿namespace Base.RabbitMq.Messages
+﻿namespace Base.RabbitMq.Markers
 {
     public interface IMessage
     {

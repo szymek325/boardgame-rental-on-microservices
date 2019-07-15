@@ -1,9 +1,11 @@
 ﻿using System.Reflection;
 using AutoMapper;
 using Base.RabbitMq;
+using Base.RabbitMq.Markers;
 using Base.RabbitMq.Messages;
 using Clients.Api.Configuration;
 using Clients.Api.DataAccess.Context;
+using Clients.Api.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
