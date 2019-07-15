@@ -10,15 +10,13 @@ namespace Base.RabbitMq
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder AddEventHandler<T>(this IApplicationBuilder app, IBusClient client)
-            where T : IEvent
+        public static IApplicationBuilder AddCommandHandler<T>(this IApplicationBuilder app)
+            where T : ICommand
         {
-            if (!(app.ApplicationServices.GetService(typeof(IEventHandler<T>)) is IEventHandler<T> handler))
+            if (!(app.ApplicationServices.GetService(typeof(IBusClient)) is IBusClient busClient))
                 throw new NullReferenceException();
 
-            client
-                .SubscribeAsync<T>(async (msg, context) => { await handler.HandleAsync(msg, CancellationToken.None); });
-            return app;
+            return AddCommandHandler<T>(app, busClient);
         }
 
         public static IApplicationBuilder AddEventHandler<T>(this IApplicationBuilder app)
@@ -30,14 +28,34 @@ namespace Base.RabbitMq
             return AddEventHandler<T>(app, busClient);
         }
 
-        public static ISubscription SubscribeToCommand<TCommand>(this IBusClient bus,
+        private static IApplicationBuilder AddEventHandler<T>(this IApplicationBuilder app, IBusClient client)
+            where T : IEvent
+        {
+            if (!(app.ApplicationServices.GetService(typeof(IEventHandler<T>)) is IEventHandler<T> handler))
+                throw new NullReferenceException();
+
+            client.SubscribeToEvent(handler);
+            return app;
+        }
+
+        private static IApplicationBuilder AddCommandHandler<T>(this IApplicationBuilder app, IBusClient client)
+            where T : ICommand
+        {
+            if (!(app.ApplicationServices.GetService(typeof(ICommandHandler<T>)) is ICommandHandler<T> handler))
+                throw new NullReferenceException();
+
+            client.SubscribeToCommand(handler);
+            return app;
+        }
+
+        private static ISubscription SubscribeToCommand<TCommand>(this IBusClient bus,
             ICommandHandler<TCommand> handler, string name = null) where TCommand : ICommand
         {
             return bus.SubscribeAsync<TCommand>(async (msg, context) => await handler.HandleAsync(msg, CancellationToken.None),
                 cfg => cfg.WithQueue(q => q.WithName(GetExchangeName<TCommand>(name))));
         }
 
-        public static ISubscription SubscribeToEvent<TEvent>(this IBusClient bus,
+        private static ISubscription SubscribeToEvent<TEvent>(this IBusClient bus,
             IEventHandler<TEvent> handler, string name = null) where TEvent : IEvent
         {
             return bus.SubscribeAsync<TEvent>(async (msg, context) => await handler.HandleAsync(msg, CancellationToken.None),
