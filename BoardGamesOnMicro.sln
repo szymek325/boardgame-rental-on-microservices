@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E3743858-1254-4C3A-B800-07F8C1A7D6B0}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "src\docker-compose.dcproj", "{E3743858-1254-4C3A-B800-07F8C1A7D6B0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{04542065-3A8C-402F-BA44-1AD973E76F43}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "src\Services", "{04542065-3A8C-402F-BA44-1AD973E76F43}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{A105EE23-D18A-4659-966C-2842008D2583}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "src\Gateway", "{A105EE23-D18A-4659-966C-2842008D2583}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{F386C376-B144-468B-BBAB-A651CDA14341}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "src\Base", "{F386C376-B144-468B-BBAB-A651CDA14341}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Api.Ocelot", "Gateway\Gateway.Api.Ocelot\Gateway.Api.Ocelot.csproj", "{74160B9B-B9F3-4712-AB32-BF08C24A4CDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Api.Ocelot", "src\Gateway\Gateway.Api.Ocelot\Gateway.Api.Ocelot.csproj", "{74160B9B-B9F3-4712-AB32-BF08C24A4CDF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Common", "Services\Service.Common\Service.Common.csproj", "{9E4A3F87-6A9D-4E3B-A270-CE9E81E5B510}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Common", "src\Services\Service.Common\Service.Common.csproj", "{9E4A3F87-6A9D-4E3B-A270-CE9E81E5B510}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clients.Api", "Services\Clients.Api\Clients.Api.csproj", "{DDE1F9D5-52AB-4EE4-AC67-09EE78BA10CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clients.Api", "src\Services\Clients.Api\Clients.Api.csproj", "{DDE1F9D5-52AB-4EE4-AC67-09EE78BA10CD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Api", "Services\Games.Api\Games.Api.csproj", "{8725CE84-D3A5-4DC6-ABD3-7BCCA3E6F89B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Games.Api", "src\Services\Games.Api\Games.Api.csproj", "{8725CE84-D3A5-4DC6-ABD3-7BCCA3E6F89B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rentals.Api", "Services\Rentals.Api\Rentals.Api.csproj", "{DB0D1DDB-299E-46AD-8D2A-9324679ECB03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rentals.Api", "src\Services\Rentals.Api\Rentals.Api.csproj", "{DB0D1DDB-299E-46AD-8D2A-9324679ECB03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{2DD276BF-8C18-40EE-A86F-1F54EC2C93AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base.Configuration", "Base\Base.Configuration\Base.Configuration.csproj", "{B7A96249-8FA9-45BF-9AC5-40869EC3EDF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base.Configuration", "src\Base\Base.Configuration\Base.Configuration.csproj", "{B7A96249-8FA9-45BF-9AC5-40869EC3EDF3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0CFC9432-A810-4AB8-8E07-7231F8B19BE7}"
 	ProjectSection(SolutionItems) = preProject
