@@ -1,10 +1,8 @@
-# boardgame-rental-on-microservices
-Rental app built with microservices and docker. 
-Gateway, multiple APIs and databases created with docker-compose.
-
 # BoardGameRentalApp on Microservices
 BoardGameRentalApp built with Microservices and Docker
-*Only api's and gateway - without front
+*Only api's and gateway - without front*
+Gateway, multiple APIs and databases created with docker-compose.
+
 ## Projects
 1. Gateway - api gateway with OCELOT
 1. Services
@@ -14,4 +12,3 @@ BoardGameRentalApp built with Microservices and Docker
    
 ## How to Run
 1. Run docker-compose project
-
