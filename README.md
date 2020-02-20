@@ -12,3 +12,6 @@ Gateway, multiple APIs and databases created with docker-compose.
    
 ## How to Run
 1. Run docker-compose project
+
+## Branch: backend-microservices-rabbitmq
+RabbitMQ test
